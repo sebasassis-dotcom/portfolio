@@ -197,6 +197,12 @@ body.on-case #case{display:block}
 .leadvid .shot{margin:0 0 12px}
 .shot.capd img{border:1px solid var(--line)}
 .video video.native{display:block;width:100%;aspect-ratio:16/9;background:#000;border:1px solid var(--line)}
+.wide{grid-column:1/-1;padding-top:16px;border-top:1px solid var(--line)}.wide>.plab.medlab:first-child{margin-top:18px}.wide .pair{align-items:start}
+.bleed{position:relative;left:50%;transform:translateX(-50%);width:min(calc(100vw - 64px),1480px);margin:0 0 24px}
+.bleed .shot,.bleed .pair{margin:0}.bleed .pair{gap:24px}
+.wide.airy .shot,.wide.airy .pair{margin-bottom:24px}.wide.airy .pair{gap:24px}.wide.airy .bleed{margin:56px 0}
+.wide.airy .bleed + .bleed{margin-top:-32px}
+a.imglink{display:block;cursor:pointer}a.imglink img{transition:opacity .2s}a.imglink:hover img{opacity:.85}
 .hero{padding:40px 0 0}.hero .video{margin:0}
 .igpost{position:relative;max-width:420px;margin:0 auto 12px}.igpost img{display:block;width:100%;border:1px solid var(--line)}
 .igpost video{position:absolute;left:.758%;top:6.755%;width:94.7%;height:73.56%;object-fit:cover;background:#000}
@@ -406,6 +412,8 @@ img,svg{max-width:100%}
   .leadvid{order:-1!important;margin-bottom:26px}
   .ctext > *{order:0}
   .cmedia > *:not(.leadvid){order:1}
+  .wide{order:1;border-top:0;padding-top:0}
+  .bleed{left:auto;transform:none;width:100%}.bleed .pair{grid-template-columns:1fr;gap:12px}.wide.airy .bleed{margin:24px 0}.wide.airy .bleed + .bleed{margin-top:-12px}.wide.airy .shot,.wide.airy .pair{margin-bottom:12px}.wide.airy .pair{gap:12px}
   .credits{order:2!important}
   .cmedia > .shot,.cmedia > .video,.cmedia > .socials{margin-top:0;margin-bottom:12px}
   .cmedia > .letter{margin:34px 0 22px}
@@ -591,8 +599,10 @@ const DATA = [
     {label:"Little Black Book", url:"https://lbbonline.com/news/Burger-King-Its-Only-Natural"},
     {label:"Ads of the World", url:"https://www.adsoftheworld.com/campaigns/it-s-only-natural"}
   ],
-  images:["img/bk_print_full.jpg",["img/bk_print2.jpg","img/bk_print3.jpg"],
-          "img/bk_presscollage.jpg","img/bk_presslogos.jpg","img/bk_awards.jpg"],
+  images:[],
+  wide:["img/bk_print_full.jpg",["img/bk_print2.jpg","img/bk_print3.jpg"],
+        {bleed:"img/bk_mock_billboard.jpg"},{bleed:["img/bk_mock_paper.jpg","img/bk_mock_shelter.jpg"]},
+        "img/bk_presscollage.jpg"], airy:true,
   stills:[],
   credits:[["Agency","INGO The Agency"],["Creative Leadership","Daniel Fisher, Nicol\u00e1s L\u00f3pez, Fernando Montero"],["Art Direction","Andr\u00e9s Rinc\u00f3n, Andrea Lopez-Boado"],["Copy","Sebasti\u00e3o Assis, Anna Breinfalk"],["Photography","Ale Burset"]]
 },
@@ -664,7 +674,7 @@ const DATA = [
   slug:"thermomix", client:"Thermomix", title:"The All-New TM7", featured:true,
   year:"2025", credit:"Ogilvy Berlin \u00b7 Global", badge:"Silver Effie",
   awards:[{fest:"Effie",level:"Silver",logo:"img/aw_effie.png"}],
-  mp4:"media/tm_romantic.mp4", poster:"img/tm_romantic_poster.jpg", hero:true, thumb:"img/t_thermomix.jpg",
+  mp4:"media/tm_reveal_tiktok.mp4", poster:"img/tm_reveal_tiktok_poster.jpg", vertical:true, thumb:"img/t_thermomix.jpg",
   role:"Copy &amp; Concept",
   sub:"The launch that got a kitchen machine compared to an Apple Keynote.",
   copy:[
@@ -677,15 +687,18 @@ const DATA = [
     {label:"BILD \u2014 \u201cSchreie, Jubel, Ekstase f\u00fcr eine K\u00fcchenmaschine\u201d", url:"https://www.bild.de/leben-wissen/digital/thermomix-premiere-in-berlin-schreie-jubel-ekstase-fuer-eine-kuechenmaschine-67b3621d1aeb2534badcf3a2"}
   ],
   images:[
-    {filmgrid:[{mp4:"media/tm_school.mp4", poster:"img/tm_school_poster.jpg"},
-               {mp4:"media/tm_porridge.mp4", poster:"img/tm_porridge_poster.jpg"},
-               {mp4:"media/tm_vegan.mp4", poster:"img/tm_vegan_poster.jpg"}]},
-    "img/tm_1.jpg",["img/tm_2.jpg","img/tm_3.jpg"],["img/tm_4.jpg","img/tm_5.jpg"],
-    ["img/tm_7.jpg","img/tm_8.jpg"],"img/tm_6.jpg",
-    {label:"Launch night, Berlin"},
     "img/tm_event.jpg",
-    {igpost:"img/tm_keynote_ig.jpg", mp4:"media/tm_keynote_ig.mp4", poster:"img/tm_keynote_ig_poster.jpg"},
-    {mp4:"media/tm_reveal_tiktok.mp4", poster:"img/tm_reveal_tiktok_poster.jpg", vertical:true},
+    {igpost:"img/tm_keynote_ig.jpg", mp4:"media/tm_keynote_ig.mp4", poster:"img/tm_keynote_ig_poster.jpg"}],
+  wide:[
+    {label:"The launch campaign"},
+    {mp4:"media/tm_romantic.mp4", poster:"img/tm_romantic_poster.jpg"},
+    ["img/tm_2.jpg","img/tm_3.jpg"],
+    {mp4:"media/tm_school.mp4", poster:"img/tm_school_poster.jpg"},
+    ["img/tm_4.jpg","img/tm_5.jpg"],
+    {mp4:"media/tm_porridge.mp4", poster:"img/tm_porridge_poster.jpg"},
+    ["img/tm_7.jpg","img/tm_8.jpg"],
+    {mp4:"media/tm_vegan.mp4", poster:"img/tm_vegan_poster.jpg"},
+    ["img/tm_1.jpg","img/tm_6.jpg"],
     {label:"The product film"},
     {yt:"0_D55lnPP1Y"}],
   stills:[],
@@ -715,7 +728,7 @@ const DATA = [
     {q:"Hellmann\u2019s is always pushing boundaries to connect with people in surprising and engaging ways. Gaming is a powerful territory that we\u2019ve been eager to explore.", who:"Jo\u00e3o Ricardo Di Creddo Brum, Senior Marketing Manager, Unilever"}],
   images:[["img/hm_g16.jpg","img/hm_g18.jpg"],["img/hm_g26.jpg","img/hm_g32.jpg"],["img/hm_g46.jpg","img/hm_g50.jpg"],
           {src:"img/hm_loot.jpg", cap:"Loot Irresist\u00edvel \u2014 the Brazilian launch"},
-          {src:"img/hellmanns_press.jpg", cap:"Creative Salon"}],
+          {src:"img/hellmanns_press.jpg", cap:"Creative Salon", href:"https://creative.salon/articles/work/hellmann-s-fortnite-island-ogilvy-uk"}],
   stills:[],
   press:[
     {label:"Creative Salon \u2014 Hellmann\u2019s launches interactive game on Fortnite", url:"https://creative.salon/articles/work/hellmann-s-fortnite-island-ogilvy-uk"},
@@ -732,8 +745,8 @@ const DATA = [
            ["Project Managers","Mariana Ramirez, Lina LaRotta, Sasha Ibale"],
            ["Ogilvy Germany"],
            ["Executive Creative Directors","Matt Longstaff, Felipe Galiano"],
-           ["Art Director","Igor Gripovski"],
-           ["Copywriters","Lucas Storni, Julia Machado, Sebasti\u00e3o Assis"]]
+           ["Art Directors","Igor Gripovski, Andr\u00e9s Rinc\u00f3n, Paula Alexander"],
+           ["Copywriters","Sebasti\u00e3o Assis, Lucas Storni, Julia Machado"]]
 },
 {
   slug:"fielmann", client:"Fielmann", title:"Never Miss a Thing",
@@ -794,7 +807,7 @@ const DATA = [
     "How much are your masks worth on the black market?",
     "The five spices you should use on your skin to fight COVID-19."],
   result:"Most popular entry in the myth-busting category on Talenthouse. Covered by Esquire. Young Shits, 1st place.",
-  images:["img/stt_home.jpg","img/stt_fake.jpg","img/stt_trust.jpg","img/stt_learn.jpg",{src:"img/truth_drum.jpg", cap:"The Drum"}],
+  images:[{src:"img/truth_drum.jpg", cap:"The Drum", href:"https://www.thedrum.com/news/2020/05/29/the-most-ingenious-responses-the-un-s-covid-19-creative-open-brief"},"img/stt_home.jpg","img/stt_fake.jpg","img/stt_trust.jpg","img/stt_learn.jpg"],
   stills:[],
   press:[
     {label:"The Drum \u2014 The most ingenious responses to the UN\u2019s Covid-19 open brief", url:"https://www.thedrum.com/news/2020/05/29/the-most-ingenious-responses-the-un-s-covid-19-creative-open-brief"},
@@ -902,7 +915,8 @@ function render(slug){
     if(x&&x.filmgrid) return `<div class="filmgrid">${x.filmgrid.map(player).join('')}</div>`;
     if(x&&x.igpost) return `<figure class="igpost"><img src="${x.igpost}" alt="Instagram post" loading="lazy"><video controls preload="none" playsinline poster="${x.poster}"><source src="${x.mp4}" type="video/mp4"></video></figure>`;
     if(x&&(x.mp4||x.yt||x.vimeo)) return player(x);
-    if(x&&x.src) return `<figure class="shot${x.max?' narrow':''}${x.cap?' capd':''}"${x.max?` style="max-width:${x.max}px"`:''}>${x.cap?`<figcaption class="plab">${x.cap}</figcaption>`:''}<img src="${x.src}" alt="${d.client}" loading="lazy"></figure>`;
+    if(x&&x.bleed) return `<div class="bleed">${one(x.bleed)}</div>`;
+    if(x&&x.src){const im=`<img src="${x.src}" alt="${x.cap||d.client}" loading="lazy">`; return `<figure class="shot${x.max?' narrow':''}${x.cap?' capd':''}"${x.max?` style="max-width:${x.max}px"`:''}>${x.cap?`<figcaption class="plab">${x.cap}${x.href?' &#8599;':''}</figcaption>`:''}${x.href?`<a class="imglink" href="${x.href}" target="_blank" rel="noopener">${im}</a>`:im}</figure>`;}
     return fig(x); };
   const hasFilm=!!(d.yt||d.vimeo||d.mp4);
   const imgs=(d.images||[]).slice();
@@ -927,6 +941,7 @@ function render(slug){
         ${d.credits?`<div class="credits"><p class="plab">Credits</p><dl>${d.credits.map(([r,n])=>n===undefined?`<dt class="cgroup">${r}</dt>`:`<dt>${r}</dt><dd>${n}</dd>`).join('')}</dl></div>`:(d.mandatory?`<p class="mand">${d.mandatory}</p>`:``)}</div>
       <div class="cmedia">${d.hero?``:`<div class="leadvid">${hasFilm?player(d):leadImg}</div>`}${(d.films&&d.films.length)?`<div class="${d.films.length>1?'filmgrid':''}">${d.films.map(v=>player(typeof v==='string'?{vimeo:v,client:d.client,title:d.title}:v)).join('')}</div>`:''}${d.letter?`<figure class="letter"><figcaption class="plab">${d.letter.kicker}</figcaption>${d.letter.image?`<img class="paper" src="${d.letter.image}" alt="${d.letter.kicker}">`:``}<details><summary>Read the letter</summary><div class="sheet">${d.letter.lines.map((x,i)=>`<p${i===0?' class="sal"':''}${i===d.letter.lines.length-1?' class="sig"':''}>${x}</p>`).join('')}</div></details></figure>`:``}${shots}${d.portraits?`<div class="socials">${d.portraits.map(x=>
         `<figure class="sq"><img src="${x}" alt="${d.client} social" loading="lazy"></figure>`).join('')}</div>`:``}</div>
+      ${d.wide?`<div class="wide${d.airy?' airy':''}">${d.wide.map(one).join('')}</div>`:``}
     </div>
     <div class="pager mute"><a href="#/${pv.slug}">← ${pv.client}</a><a href="#/${nx.slug}">${nx.client} →</a></div>`;
   document.body.classList.add('on-case'); window.scrollTo(0,0);
