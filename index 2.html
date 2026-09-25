@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F3F0E8">
+<title>Sebastião Assis</title>
+<meta name="description" content="Copywriter. Berlin.">
+<link rel="canonical" href="https://sebastiaoassis.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sebastiaoassis.com/">
+<meta property="og:title" content="Sebastião Assis — Copywriter, Berlin">
+<meta property="og:description" content="Copywriter in Berlin. Burger King, Hellmann's, Thermomix, Curtice Brothers, Meller. Cannes Lion. D&AD Yellow Pencil.">
+<meta property="og:image" content="https://sebastiaoassis.com/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..110,400..700&family=Literata:opsz,wght@7..72,300..500&display=swap" rel="stylesheet">
+<style>
+:root[data-theme="bone"]{
+  --bg:#F3F0E8; --ink:#15150F; --mute:#8B8677; --line:#DFDACC;
+  --accent:#D8391F; --band:#E9E3D3; --imgbg:#E9E5DA;
+}
+:root[data-theme="ink"]{
+  --bg:#101112; --ink:#F3F1EB; --mute:#8B8D8F; --line:#282A2C;
+  --accent:#E8A33D; --band:#171919; --imgbg:#1B1D1F;
+}
+:root{
+  --bg:#F3F0E8; --ink:#15150F; --mute:#8B8677; --line:#DFDACC;
+  --accent:#D8391F; --band:#E9E3D3; --imgbg:#E9E5DA;
+  --max:1100px;
+  --gut:132px;         /* label column */
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Archivo",system-ui,sans-serif;font-weight:400;
+  font-size:15px;line-height:1.55;letter-spacing:-.008em;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+.mute{color:var(--mute)}
+
+/* type scale — real contrast, not one size everywhere */
+.label{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin:0 0 13px;color:var(--ink);
+  display:flex;align-items:center;gap:10px}
+.label::before{content:"";width:18px;height:2px;background:var(--accent);flex:none}
+.num{font-size:11px;font-weight:500;letter-spacing:.1em;font-variant-numeric:tabular-nums;color:var(--mute)}
+
+#veil{position:fixed;inset:0;z-index:300;background:var(--bg);
+  display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;
+  transition:opacity 1s cubic-bezier(.4,0,.2,1),visibility 1s}
+#veil.gone{opacity:0;visibility:hidden;pointer-events:none}
+.veil-in{max-width:min(1000px,92vw)}
+#veil blockquote{margin:0;font-size:clamp(27px,5.1vw,66px);font-weight:600;line-height:1.08;
+  letter-spacing:-.042em;color:var(--ink)}
+#veil .ln{display:block;overflow:hidden;padding-bottom:.06em}
+#veil .ln i{display:block;font-style:normal;transform:translateY(112%);
+  animation:vrise 1.05s cubic-bezier(.16,.84,.28,1) forwards}
+#veil .ln:nth-child(1) i{animation-delay:.18s}
+#veil .ln:nth-child(2) i{animation-delay:.34s}
+#veil .ln:nth-child(3) i{animation-delay:.50s}
+@keyframes vrise{to{transform:none}}
+.attr{margin:clamp(26px,4vh,44px) 0 0;font-size:11px;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--mute);display:flex;align-items:center;justify-content:center;
+  gap:12px;opacity:0;animation:vfade .9s ease 1.5s forwards}
+.attr::before,.attr::after{content:"";width:20px;height:2px;background:var(--accent);flex:none}
+@keyframes vfade{to{opacity:1}}
+body.veiled{overflow:hidden}
+@media (prefers-reduced-motion:reduce){#veil{display:none}}
+nav{position:fixed;top:0;left:0;right:0;z-index:60;background:color-mix(in srgb,var(--bg) 92%,transparent);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:baseline;padding-top:17px;padding-bottom:16px}
+nav .me{font-weight:600;letter-spacing:-.02em}
+nav .me{font-size:16px}
+nav .role{font-weight:600;letter-spacing:.18em;text-transform:uppercase;font-size:10px;margin-left:12px;
+  position:relative;top:-1px;color:var(--mute)}
+nav .me:hover .role{color:var(--mute)}
+nav ul{display:flex;gap:24px;list-style:none;margin:0;padding:0;font-size:13px}
+nav a:hover{color:var(--accent)}
+main{padding-top:78px}
+
+/* asymmetric section frame: label sits in its own column */
+.sec{border-top:1px solid var(--line);padding:52px 0 92px}
+.sec:first-of-type{border-top:0;padding-top:14px}
+
+/* ---- panel 1: latest work ---- */
+.stagewrap{max-width:940px;margin:0 auto}
+.stage{position:relative;aspect-ratio:16/10;background:var(--imgbg);overflow:hidden;
+  border:1px solid var(--line)}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .85s cubic-bezier(.4,0,.2,1);pointer-events:none}
+.slide.on{opacity:1;pointer-events:auto}
+.slide img{width:100%;height:100%;object-fit:cover}
+.slide .empty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--mute)}
+.prog{height:1px;background:var(--line);position:relative;overflow:hidden}
+.prog i{position:absolute;inset:0;width:0;background:var(--accent);display:block}
+.prog i.run{animation:fill 6500ms linear forwards}
+.prog i.run.short{animation:fillShort 4500ms linear forwards}
+@keyframes fill{to{width:100%}}
+@keyframes fillShort{from{width:31%}to{width:100%}}
+.bar{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding-top:13px}
+.barcap .t{font-weight:600;letter-spacing:-.028em;font-size:clamp(19px,2vw,24px);line-height:1.15;display:block}
+.nav2{display:flex;align-items:baseline;gap:16px;flex:none}
+.count{font-size:11px;letter-spacing:.1em;font-variant-numeric:tabular-nums}
+.arw{background:none;border:0;padding:0 2px;font:inherit;font-size:16px;color:var(--ink);cursor:pointer;line-height:1;
+  transition:opacity .2s}
+.arw:hover{color:var(--accent)}
+
+/* ---- panel 2: selected work ---- */
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px 28px}
+.tile{grid-column:span 1}
+.tile.full{grid-column:span 2}
+.frame{position:relative;overflow:hidden;background:var(--imgbg);border:1px solid var(--line)}
+.frame{aspect-ratio:16/10}
+.frame img{height:100%;object-fit:cover;transition:opacity .5s ease}
+.tile:hover .frame img{opacity:.86}
+.frame .empty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--mute)}
+.seals{position:absolute;top:0;right:0;width:104px;z-index:3;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:18px;
+  padding:18px 14px 26px;
+  background:linear-gradient(to bottom left,rgba(12,12,10,.42),rgba(12,12,10,0) 72%)}
+.seals img{width:100%;height:auto;max-height:44px;object-fit:contain}
+.seals img.pressmark{width:72%;max-height:26px;opacity:.9}
+.sealrule{display:block;width:34px;height:1px;background:rgba(255,255,255,.5);margin:2px 0}
+.frame.ink .sealrule,.slide.ink .sealrule{background:rgba(20,20,15,.35)}
+.stage .seals img.pressmark{max-height:32px}
+.frame.ink .seals,.slide.ink .seals{background:linear-gradient(to bottom left,rgba(255,255,255,.6),rgba(255,255,255,0) 72%)}
+.stage .seals{width:132px;gap:22px;padding:24px 18px 34px}
+.stage .seals img{max-height:56px}
+@media (max-width:600px){.seals{width:70px;gap:12px;padding:12px 9px 18px}
+  .seals img{max-height:30px}}
+.cap{display:grid;grid-template-columns:32px 1fr auto;gap:14px;align-items:baseline;padding-top:16px}
+.cap .t{font-weight:600;letter-spacing:-.028em;font-size:clamp(19px,2vw,24px);line-height:1.15;display:block}
+.tile:hover .cap .t{color:var(--accent)}
+.awards{padding-top:4px;font-size:13px}
+
+/* ---- about / contact ---- */
+#about{background:var(--band);clip-path:inset(0 -100vmax);box-shadow:0 0 0 100vmax var(--band);
+  padding:54px 0 50px;border-top:0}
+#awards{padding-top:52px}
+.about{display:grid;grid-template-columns:minmax(0,1fr) 232px;gap:44px;align-items:start}
+.creed{font-family:"Literata",Georgia,serif;font-optical-sizing:auto;
+  font-size:clamp(15px,1.55vw,18.5px);font-weight:400;letter-spacing:-.002em;line-height:1.92;
+  margin:0;max-width:34ch}
+.creed .dim{color:var(--mute)}
+.creed.close{margin:34px 0 0;font-weight:600}
+.lead{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin:0 0 16px!important}
+.feats{list-style:none;margin:0;padding:0;max-width:46ch;border-top:1px solid var(--line)}
+.feats li{padding:14px 0;border-bottom:1px solid var(--line);line-height:1.5}
+.feats b{font-weight:600}
+.about h2{font-size:clamp(19px,2.1vw,25px);font-weight:500;letter-spacing:-.028em;line-height:1.26;margin:0 0 24px;max-width:23ch}
+.about p{margin:0 0 13px;max-width:42ch}
+.about dl{display:grid;grid-template-columns:auto 1fr;gap:9px 24px;margin:30px 0 0;max-width:42ch;
+  border-top:1px solid var(--line);padding-top:20px;font-size:14px}
+.about dt{white-space:nowrap;color:var(--mute)}
+.about dd{margin:0}
+.portrait{aspect-ratio:4/5;background:var(--imgbg);border:1px solid var(--line);overflow:hidden}
+.portrait img{height:100%;object-fit:cover}
+.contact{display:flex;flex-direction:column;align-items:flex-start}
+.links{margin-top:26px;display:flex;flex-direction:column;gap:14px}
+.linkrow{display:flex;flex-wrap:wrap;gap:12px 30px}
+a.big{font-size:19px;font-weight:600;letter-spacing:-.02em;border-bottom:2px solid var(--accent);
+  padding-bottom:3px;display:inline-block}
+a.big:hover{color:var(--accent)}
+.arw2{font-weight:400}
+a.mail{font-size:clamp(21px,3vw,34px);font-weight:500;letter-spacing:-.032em;display:inline-block;margin-top:10px;
+  border-bottom:1px solid var(--line);padding-bottom:4px}
+a.mail:hover{color:var(--accent);border-color:var(--accent)}
+.else{margin-top:34px;display:flex;gap:22px;font-size:14px}
+.else a{border-bottom:1px solid var(--line);padding-bottom:2px}
+.else a:hover{border-color:var(--ink)}
+footer{border-top:1px solid var(--line);padding:22px 0 44px;font-size:13px}
+
+/* ---- case ---- */
+#case{display:none;padding-top:86px}
+body.on-case #home{display:none}
+body.on-case #case{display:block}
+.back{display:inline-block;padding:18px 0 0;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+.back:hover{color:var(--mute)}
+.chead{padding:30px 0 40px;border-bottom:1px solid var(--line)}
+.ckicker{display:flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;margin:0}
+.ckicker::before{content:"";width:18px;height:2px;background:var(--accent);flex:none}
+.chead h1{font-size:clamp(27px,4.6vw,46px);font-weight:500;letter-spacing:-.038em;line-height:1.06;margin:8px 0 0;max-width:16ch}
+.cmeta{display:flex;flex-wrap:wrap;gap:8px 26px;padding-top:22px;font-size:13px}
+.cbody{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:44px 56px;padding:40px 0}
+.cbody p{margin:0 0 12px;max-width:38ch}
+.copyblock{margin:26px 0 0}
+.csub{font-family:"Literata",Georgia,serif;font-size:clamp(17px,1.9vw,22px);line-height:1.4;letter-spacing:-.01em;
+  color:var(--ink);margin:14px 0 0;max-width:34ch}
+.shot.narrow{margin-left:auto;margin-right:auto;background:none;border:0}
+.shot.narrow img{border:1px solid var(--line)}
+.shot figcaption.plab{margin:20px 0 10px}
+.cmedia .socials{margin:0 0 12px;grid-template-columns:repeat(5,1fr);gap:8px}
+.shot.capd{background:none;border:0}
+.leadvid .shot{margin:0 0 12px}
+.shot.capd img{border:1px solid var(--line)}
+.video video.native{display:block;width:100%;aspect-ratio:16/9;background:#000;border:1px solid var(--line)}
+.video.vertical{max-width:340px;margin-left:auto;margin-right:auto}
+.video.vertical video.native{aspect-ratio:9/16}
+.plab.medlab{margin:34px 0 14px}
+.leadvid + .plab.medlab,.cmedia > .plab.medlab:first-child{margin-top:0}
+.filmgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 12px}
+.filmgrid .video{margin:0}
+.filmgrid .fallback{font-size:11px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 12px}
+.pair .shot{margin:0}
+.quotes{margin:28px 0 0;max-width:38ch}
+.quotes blockquote{margin:0 0 20px;padding:0}
+.quotes blockquote p{font-family:"Literata",Georgia,serif;font-size:16px;line-height:1.55;margin:0 0 8px!important;color:var(--ink)}
+.quotes cite{display:block;font-style:normal;font-size:12px;line-height:1.45;color:var(--mute)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px;margin:28px 0 0;max-width:38ch;
+  padding-top:20px;border-top:1px solid var(--line)}
+.stats b{display:block;font-size:clamp(24px,2.6vw,30px);font-weight:600;letter-spacing:-.03em;line-height:1}
+.stats span{display:block;margin-top:6px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.credits{margin:30px 0 0;max-width:38ch;padding-top:18px;border-top:1px solid var(--line)}
+.credits dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:12.5px;line-height:1.45}
+.credits dt{color:var(--mute);white-space:nowrap}
+.credits dd{margin:0}
+.letter{margin:22px 0}
+.letter .paper{display:block;width:100%;max-width:401px;height:auto;margin:0 auto;border:1px solid var(--line)}
+.letter details{margin-top:12px}
+.letter summary{cursor:pointer;list-style:none;display:inline-block;font-size:13px;font-weight:600;
+  border-bottom:2px solid var(--accent);padding-bottom:2px}
+.letter summary::-webkit-details-marker{display:none}
+.letter summary::after{content:" \2193"}
+.letter details[open] summary::after{content:" \2191"}
+.letter details[open] .sheet{margin-top:14px}
+.cbody .res{margin-top:24px}
+.cbody .press{margin-top:24px}
+.cbody .mand{margin-top:22px;padding-top:14px;border-top:1px solid var(--line)}
+.lines{max-width:38ch;border-left:2px solid var(--accent);padding-left:14px}
+.lines p{margin:0 0 10px!important}
+.lines p:last-child{margin-bottom:0!important}
+.letter .sheet{background:#FBFAF6;border:1px solid var(--line);padding:clamp(22px,4vw,42px) clamp(22px,4.5vw,50px);
+  font-family:"Literata",Georgia,serif;font-size:clamp(15px,1.4vw,17px);line-height:1.62;color:#1d1d19;
+  box-shadow:0 1px 0 var(--line),0 12px 28px -18px rgba(40,30,10,.25)}
+.letter .sheet p{margin:0;max-width:52ch}
+.letter .sheet .sal{margin-bottom:14px}
+.letter .sheet .sig{margin-top:16px;font-style:italic}
+.lines p{font-weight:600;margin:0 0 4px;letter-spacing:-.015em}
+.res{margin:22px 0 0;max-width:38ch;color:var(--mute);font-size:14px}
+.mand{margin:22px 0 0;max-width:38ch;color:var(--mute);font-size:12px;line-height:1.65}
+.embed{position:relative;padding-top:56.25%;background:var(--imgbg)}
+.embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video{margin-bottom:12px}
+.facade{display:block;width:100%;padding:0;border:1px solid var(--line);background:var(--imgbg);position:relative;
+  aspect-ratio:16/9;cursor:pointer;overflow:hidden}
+.facade img{height:100%;object-fit:contain}
+.facade .play{position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;
+  background:rgba(255,255,255,.95);box-shadow:0 1px 12px rgba(0,0,0,.16);transition:transform .25s}
+.facade:hover .play{transform:scale(1.06)}
+.facade .play::after{content:"";position:absolute;left:22px;top:17px;border-style:solid;
+  border-width:11px 0 11px 17px;border-color:transparent transparent transparent var(--ink)}
+.fallback{margin:9px 0 0;color:var(--mute);font-size:12px}
+.fallback a{border-bottom:1px solid var(--line)}
+.shot{margin:0 0 12px;background:var(--imgbg);border:1px solid var(--line);overflow:hidden}
+.shot img{height:auto}
+#career{padding:46px 0 40px}
+.journey{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:14px 0;align-items:flex-start}
+.journey li{flex:1 1 0;min-width:96px;display:flex;flex-direction:column;align-items:center;
+  text-align:center;gap:9px;position:relative;padding:0 6px}
+.journey li::after{content:"";position:absolute;top:23px;right:-1px;width:calc(50% - 24px);
+  height:1px;background:var(--line)}
+.journey li::before{content:"";position:absolute;top:23px;left:-1px;width:calc(50% - 24px);
+  height:1px;background:var(--line)}
+.journey li:first-child::before,.journey li:last-child::after{display:none}
+.jl{width:46px;height:46px;border-radius:9px;overflow:hidden;background:var(--imgbg);
+  border:1px solid var(--line);display:flex;align-items:center;justify-content:center;z-index:1}
+.jl img{width:100%;height:100%;object-fit:cover}
+.journey .dot{width:11px;height:11px;border-radius:50%;background:var(--accent)}
+.jn{font-size:12.5px;font-weight:600;letter-spacing:-.012em;line-height:1.25}
+.jy{font-size:11px;color:var(--mute);font-variant-numeric:tabular-nums}
+@media (max-width:700px){.journey li{flex:1 1 30%;min-width:0}
+  .journey li::before,.journey li::after{display:none}}
+
+.presslist{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.presslist li{border-bottom:1px solid var(--line)}
+.presslist a,.presslist .row{display:grid;grid-template-columns:170px minmax(0,1fr) 160px 20px;
+  gap:18px;align-items:baseline;padding:14px 0;transition:color .2s}
+@media (max-width:760px){.presslist a,.presslist .row{grid-template-columns:1fr 20px;gap:3px 12px}
+  .ph{grid-column:1}.pc{grid-column:1;text-align:left!important}.pa{grid-row:1;grid-column:2}}
+.presslist a:hover{color:var(--accent)}
+.po{font-weight:600;letter-spacing:-.015em}
+.ph{font-size:14px;color:var(--mute)}
+.presslist a:hover .ph{color:var(--accent)}
+.pc{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--mute);text-align:right}
+.pa{font-size:12px;color:var(--mute);text-align:right}
+
+.awardlist{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.awardlist li{display:grid;grid-template-columns:46px 170px 200px minmax(0,1fr);gap:18px;align-items:center;
+  padding:13px 0;border-bottom:1px solid var(--line)}
+@media (max-width:760px){.awardlist li{grid-template-columns:34px 1fr;gap:4px 12px;align-items:start}
+  .alogo{grid-row:span 3!important}}
+.alogo{display:flex;align-items:center;justify-content:flex-start;height:26px}
+.alogo img{max-height:26px;max-width:42px;width:auto;height:auto;object-fit:contain;opacity:.9}
+.aw{font-weight:600;letter-spacing:-.015em}
+.ay{font-size:13px}
+.ap{font-size:13px;color:var(--mute)}
+
+.press{margin:24px 0 0;max-width:38ch}
+.plab{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin:0 0 10px;
+  display:flex;align-items:center;gap:10px}
+.plab::before{content:"";width:18px;height:2px;background:var(--accent);flex:none}
+.press a,.press .pitem{display:block;font-size:14px;padding:5px 0;border-bottom:1px solid var(--line)}
+.press a:hover{color:var(--accent)}
+.socials{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:12px}
+.sq{margin:0;background:var(--imgbg);border:1px solid var(--line);overflow:hidden}
+.sq img{height:auto}
+.pager{border-top:1px solid var(--line);display:flex;justify-content:space-between;padding:22px 0 12vh;font-size:13px}
+.pager a:hover{color:var(--mute)}
+
+@media (max-width:860px){
+  .about{grid-template-columns:1fr;gap:34px}
+  .portrait{max-width:230px}
+  .cbody{grid-template-columns:1fr;gap:28px}
+}
+@media (max-width:600px){
+  .grid{grid-template-columns:1fr;gap:40px}
+  .tile.full{grid-column:span 1}
+  .cap{grid-template-columns:24px 1fr auto;gap:10px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+/* ============ mobile ============ */
+html{-webkit-text-size-adjust:100%}
+body{overflow-x:hidden}
+img,svg{max-width:100%}
+
+@media (max-width:900px){
+  :root{--max:100%}
+  .wrap{padding:0 22px}
+  .sec{padding:40px 0 56px}
+  .sec:first-of-type{padding-top:12px}
+}
+
+@media (max-width:640px){
+  .wrap{padding:0 18px}
+  main{padding-top:66px}
+  nav .wrap{padding-top:14px;padding-bottom:13px}
+  nav .me{font-size:15px}
+  nav .role{display:none}
+  nav ul{gap:16px;font-size:12px}
+  nav ul a{padding:6px 0;display:inline-block}
+
+  /* quote: let it wrap, animate as a block instead of clipped lines */
+  #veil{padding:22px 20px}
+  #veil blockquote{font-size:23px;line-height:1.22;letter-spacing:-.028em}
+  #veil .ln{overflow:visible;padding-bottom:0}
+  #veil .ln i{transform:translateY(14px);opacity:0;animation:vriseM .9s cubic-bezier(.2,.8,.3,1) forwards}
+  .attr{margin-top:22px;font-size:10px;letter-spacing:.18em}
+
+  /* carousel */
+  .stagewrap{max-width:100%}
+  .bar{flex-direction:column;align-items:flex-start;gap:10px;padding-top:11px}
+  .nav2{align-self:flex-end;margin-top:-30px}
+  .barcap .t{font-size:19px}
+  .arw{font-size:20px;padding:4px 6px}
+  .stage .seals{width:64px;gap:11px;padding:11px 8px 16px}
+  .stage .seals img{max-height:28px}
+
+  /* grid */
+  .grid{gap:34px}
+  .cap{grid-template-columns:22px 1fr auto;gap:10px;padding-top:11px}
+  .cap .t{font-size:19px}
+  .awards{font-size:12px}
+
+  /* about + journey */
+  #about{padding:40px 0 38px}
+  .about{gap:26px}
+  .creed{font-size:16px;line-height:1.85;max-width:100%}
+  .portrait{max-width:150px}
+  #career{padding:34px 0 30px}
+  .journey{gap:20px 0}
+  .journey li{flex:0 0 33.3333%;min-width:0;padding:0 4px}
+  .jl{width:40px;height:40px;border-radius:8px}
+  .jn{font-size:11.5px}
+  .jy{font-size:10.5px}
+
+  /* awards + press */
+  .awardlist li,.presslist a,.presslist .row{padding:10px 0}
+  .aw,.po{font-size:13.5px}
+  .ay,.ph{font-size:11.5px}
+
+  /* contact */
+  a.mail{font-size:20px;word-break:break-all;letter-spacing:-.02em}
+  a.big{font-size:17px}
+  .links{margin-top:20px;gap:12px}
+  .linkrow{gap:10px 22px}
+
+  /* case pages */
+  #case{padding-top:66px}
+  .chead{padding:20px 0 26px}
+  .chead h1{font-size:29px;letter-spacing:-.03em}
+  .cmeta{padding-top:14px;gap:6px 16px;font-size:12px}
+  .credits dl{grid-template-columns:1fr;gap:1px 0}.credits dd{margin-bottom:8px}
+  .cbody{gap:24px;padding:26px 0}
+  .cbody{display:flex;flex-direction:column;gap:0}
+  .ctext,.cmedia{display:contents}
+  .cbody > * > *{order:1}
+  .leadvid{order:-1!important;margin-bottom:26px}
+  .ctext > *{order:0}
+  .cmedia > *:not(.leadvid){order:1}
+  .credits{order:2!important}
+  .cmedia > .shot,.cmedia > .video,.cmedia > .socials{margin-top:0;margin-bottom:12px}
+  .cmedia > .letter{margin:34px 0 22px}
+  .ctext > .story{order:0}
+  .cbody p,.lines,.res,.mand,.press{max-width:100%}
+  .lines p{font-size:15px}
+  .filmgrid{grid-template-columns:1fr}
+  .socials,.cmedia .socials{grid-template-columns:repeat(3,1fr);gap:6px}
+  .pager{padding:18px 0 60px;font-size:12px}
+  .fallback{font-size:11.5px}
+}
+
+@media (max-width:380px){
+  #veil blockquote{font-size:20px}
+  .cap .t,.barcap .t{font-size:17px}
+  .journey li{flex:0 0 50%}
+}
+@keyframes vriseM{to{transform:none;opacity:1}}
+
+</style>
+</head>
+<body>
+<div id="veil" aria-hidden="true">
+  <div class="veil-in">
+    <blockquote>
+      <span class="ln"><i>&ldquo;All advertising is unwanted,</i></span>
+      <span class="ln"><i>so if you're gonna crash the party,</i></span>
+      <span class="ln"><i>bring some champagne with you.&rdquo;</i></span>
+    </blockquote>
+    <p class="attr">Bob Thacker</p>
+  </div>
+</div>
+<nav><div class="wrap">
+  <a href="#" class="me">Sebastião Assis <span class="role mute">Copywriter</span></a>
+  <ul><li><a href="#">Work</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li></ul>
+</div></nav>
+
+<main id="home">
+  <div class="wrap">
+    <section class="sec">
+      <div class="stagewrap">
+      <p class="label">Latest work</p>
+      <div class="stage" id="stage"></div>
+      <div class="prog"><i id="prog"></i></div>
+      <div class="bar">
+        <div class="barcap" id="barcap"></div>
+        <div class="nav2">
+          <span class="count mute" id="count"></span>
+          <button class="arw" id="prev" type="button" aria-label="Previous">&#8592;</button>
+          <button class="arw" id="next" type="button" aria-label="Next">&#8594;</button>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <p class="label">Selected work</p>
+      <div class="grid" id="grid"></div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section class="sec" id="about"><p class="label">About</p><div class="about">
+      <div>
+        <p class="creed">There are two types of copywriters.<br>
+        <span class="dim">(According to David Ogilvy.)</span><br>
+        Poets and killers.<br>
+        The poets do it for the magic.<br>
+        The killers do it for the sales.<br>
+        The poets see the ad as an end.<br>
+        The killers see it as a means to an end.<br>
+        There is, however, a third type:<br>
+        The ones who are both poets and killers.<br>
+        The ones who create magic and generate results.<br>
+        That's the kind of copywriter I try to be.</p>
+      </div>
+      <div><figure class="portrait" style="margin:0"><img src="img/portrait.jpg" alt="Sebastião Assis"></figure></div>
+    </div></section>
+
+    <section class="sec" id="career"><p class="label">Journey</p>
+      <ol class="journey">
+        <li><span class="jl"><img src="img/cv_mas.png" alt="Miami Ad School Europe"></span><span class="jn">Miami Ad School</span><span class="jy">2019 — 21</span></li>
+        <li><span class="jl"><img src="img/cv_dandad.png" alt="D&amp;AD New Blood Academy"></span><span class="jn">D&amp;AD Academy</span><span class="jy">2020</span></li>
+        <li><span class="jl"><img src="img/cv_innocean.png" alt="INNOCEAN Berlin"></span><span class="jn">INNOCEAN</span><span class="jy">2020 — 21</span></li>
+        <li><span class="jl"><img src="img/cv_ogilvy.png" alt="Ogilvy Germany"></span><span class="jn">Ogilvy Berlin</span><span class="jy">2021 — 25</span></li>
+        <li><span class="jl"><img src="img/cv_mad.png" alt="MAD//Masters"></span><span class="jn">MAD//Masters</span><span class="jy">2024 — 25</span></li>
+        <li><span class="jl"><img src="img/cv_leo.png" alt="Leo Burnett"></span><span class="jn">Leo Burnett</span><span class="jy">2025 — 26</span></li>
+        <li class="now"><span class="jl"><span class="dot"></span></span><span class="jn">Independent</span><span class="jy">2026 —</span></li>
+      </ol>
+    </section>
+
+    <section class="sec" id="awards"><p class="label">Awards</p>
+      <ul class="awardlist">
+        <li><span class="alogo"><img src="img/aw_cannes_ink.png" alt=""></span><span class="aw">Cannes Lions</span><span class="ay">Bronze, 2022</span><span class="ap">Curtice Brothers — Print · Breakthrough on a Budget</span></li>
+        <li><span class="alogo"><img src="img/aw_cannes_ink.png" alt=""></span><span class="aw">Cannes Lions</span><span class="ay">Shortlist, 2022</span><span class="ap">Curtice Brothers — Media · Breakthrough on a Budget</span></li>
+        <li><span class="alogo"><img src="img/aw_nyf_ink.png" alt=""></span><span class="aw">New York Festivals</span><span class="ay">Bronze, 2022</span><span class="ap">Curtice Brothers — Print Craft · Copywriting</span></li>
+        <li><span class="alogo"><img src="img/aw_nyf_ink.png" alt=""></span><span class="aw">New York Festivals</span><span class="ay">Silver, 2022</span><span class="ap">Curtice Brothers — Print · Real-Time Response</span></li>
+        <li><span class="alogo"><img src="img/aw_nyf_ink.png" alt=""></span><span class="aw">New York Festivals</span><span class="ay">Shortlist, 2022</span><span class="ap">Curtice Brothers — PR · Real-Time Response</span></li>
+        <li><span class="alogo"><img src="img/aw_adc_ink.png" alt=""></span><span class="aw">ADC</span><span class="ay">Bronze, 2022</span><span class="ap">Curtice Brothers — PR Activation</span></li>
+        <li><span class="alogo"><img src="img/aw_effie_ink.png" alt=""></span><span class="aw">Effie</span><span class="ay">Silver</span><span class="ap">Thermomix — TM7 Global Launch</span></li>
+        <li><span class="alogo"><img src="img/aw_clio_ink.png" alt=""></span><span class="aw">Clio</span><span class="ay">Bronze, 2026</span><span class="ap">Burger King — It's Only Natural · Social Media</span></li>
+        <li><span class="alogo"><img src="img/aw_clio_ink.png" alt=""></span><span class="aw">Clio</span><span class="ay">Shortlist, 2026</span><span class="ap">Burger King — It's Only Natural · Film</span></li>
+        <li><span class="alogo"><img src="img/aw_oneshow_ink.png" alt=""></span><span class="aw">The One Show</span><span class="ay">Shortlist, 2026</span><span class="ap">Burger King — It's Only Natural · Press &amp; Outdoor</span></li>
+        <li><span class="alogo"><img src="img/aw_dandad_ink.png" alt=""></span><span class="aw">D&amp;AD</span><span class="ay">Three shortlists, 2026</span><span class="ap">Burger King — Out of Home · Print &amp; Promotional · Social Media</span></li>
+        <li><span class="alogo"><img src="img/aw_dandad_ink.png" alt=""></span><span class="aw">D&amp;AD New Blood</span><span class="ay">Yellow Pencil, 2020</span><span class="ap">Audible — Screen Time</span></li>
+        <li><span class="alogo"><img src="img/aw_un_ink.png" alt=""></span><span class="aw">UN Open Brief</span><span class="ay">Selected from 17,000+ entries, 2020</span><span class="ap">Spread The Truth Project</span></li>
+        <li><span class="alogo"><img src="img/aw_ys_ink.png" alt=""></span><span class="aw">Young Shits</span><span class="ay">1st place, 2020</span><span class="ap">Spread The Truth Project</span></li>
+        <li><span class="alogo"><img src="img/aw_cannes_ink.png" alt=""></span><span class="aw">Young Lions Germany</span><span class="ay">Selected four times</span><span class="ap">2023 — 2026</span></li>
+      </ul>
+    </section>
+
+    <section class="sec" id="press"><p class="label">Press</p>
+      <ul class="presslist">
+        <li><a href="https://adage.com/creativity/work/aa-burger-king-its-only-natural/" target="_blank" rel="noopener">
+          <span class="po">Ad Age</span><span class="ph">&ldquo;Babies drool for Burger King&rdquo;</span><span class="pc">Burger King</span><span class="pa">&#8599;</span></a></li>
+        <li><a href="https://www.thedrum.com/news/2025/10/07/ad-the-day-babies-want-bite-parents-burger-king" target="_blank" rel="noopener">
+          <span class="po">The Drum</span><span class="ph">&ldquo;Ad of the Day&rdquo;</span><span class="pc">Burger King</span><span class="pa">&#8599;</span></a></li>
+        <li><a href="https://www.creativereview.co.uk/burger-king-ingo-campaign-advertising/" target="_blank" rel="noopener">
+          <span class="po">Creative Review</span><span class="ph">On the new Burger King campaign</span><span class="pc">Burger King</span><span class="pa">&#8599;</span></a></li>
+        <li><a href="https://lbbonline.com/news/Burger-King-Its-Only-Natural" target="_blank" rel="noopener">
+          <span class="po">Little Black Book</span><span class="ph">&ldquo;Kids&rsquo; real reactions to Whopper&rdquo;</span><span class="pc">Burger King</span><span class="pa">&#8599;</span></a></li>
+        <li><span class="row">
+          <span class="po">The Times</span><span class="ph">&ldquo;Antonio Conte bans ketchup&rdquo;</span><span class="pc">Curtice Brothers</span><span class="pa"></span></span></li>
+        <li><a href="https://www.thesun.co.uk/sport/football/16861744/tottenham-news-antonio-conte-ketchup-ban/" target="_blank" rel="noopener">
+          <span class="po">The Sun</span><span class="ph">&ldquo;Saucey proposal&rdquo;</span><span class="pc">Curtice Brothers</span><span class="pa">&#8599;</span></a></li>
+        <li><a href="https://creative.salon/articles/work/hellmann-s-fortnite-island-ogilvy-uk" target="_blank" rel="noopener">
+          <span class="po">Creative Salon</span><span class="ph">On the Fortnite island</span><span class="pc">Hellmann&rsquo;s</span><span class="pa">&#8599;</span></a></li>
+        <li><a href="https://www.esquire.com/es/actualidad/a32443808/fake-news-spread-the-truth-project-coronavirus/" target="_blank" rel="noopener">
+          <span class="po">Esquire</span><span class="ph">On fake news that told the truth</span><span class="pc">Spread The Truth</span><span class="pa">&#8599;</span></a></li>
+        <li><a href="https://www.marketingdirecto.com/creacion/campanas-de-marketing/meller-convierte-idea-nacida-linkedin-campana-creativa-post-eclipse" target="_blank" rel="noopener">
+          <span class="po">MarketingDirecto</span><span class="ph">&ldquo;De LinkedIn a campa&ntilde;a real&rdquo;</span><span class="pc">Meller</span><span class="pa">&#8599;</span></a></li>
+      </ul>
+    </section>
+
+
+    <section class="sec" id="contact">
+      <p class="label">Contact</p>
+      <div class="contact">
+        <a class="mail" href="mailto:sebas.assis@gmail.com">sebas.assis@gmail.com</a>
+        <div class="links">
+          <div class="linkrow">
+            <a class="big" href="https://www.linkedin.com/in/sebasti%C3%A3o-assis/" target="_blank" rel="noopener">LinkedIn <span class="arw2">&#8599;</span></a>
+            <a class="big" href="https://wa.me/351914482168" target="_blank" rel="noopener">WhatsApp <span class="arw2">&#8599;</span></a>
+          </div>
+          <span class="mute">Berlin · Available for freelance and agency collaborations</span>
+        </div>
+      </div>
+    </section>
+    <footer><span class="mute">© <span id="yr"></span> Sebastião Assis · Copywriter · Berlin</span></footer>
+  </div>
+</main>
+
+<div id="case"><div class="wrap" id="case-inner"></div></div>
+
+<script>
+const DATA = [
+{
+  slug:"burger-king", client:"Burger King", title:"It's Only Natural", featured:true,
+  year:"2025", credit:"INGO The Agency \u00b7 Global", badge:"Bronze Clio \u00b7 2026",
+  awards:[{fest:"Clio",level:"Bronze",logo:"img/aw_clio.png"},
+          {fest:"One Show",level:"Shortlist",logo:"img/aw_oneshow.png"},
+          {fest:"D&AD",level:"Shortlist",logo:"img/aw_dandad.png"}],
+  yt:"v4Y0amjGlN4", full:true,
+  thumb:"img/t_bk_print.jpg",
+  films:["1203243585"],
+  role:"Copy &amp; Concept",
+  sub:"Kids always want what their parents are eating. So we filmed exactly that.",
+  copy:[
+    "Burger King spent years taking artificial flavours, colours and preservatives out of its food. Good news. But an ingredients list never made anyone hungry.",
+    "Any parent knows this, though: whatever you\u2019re eating, your kid wants it. So we collected real phone videos of babies and toddlers watching their parents bite into a Whopper. No actors. No script. Just very small people, staring very hard at a burger.",
+    "It launched in Brazil and rolled out globally, across TV, social, outdoor and restaurants. More than 60 publications picked it up."
+  ],
+  lines:[
+    "Your kid sees your nuggets. / Your kid wants your nuggets.",
+    "Your kid sees your fries. / Your kid wants your fries.",
+    "And most of all, your kid sees your Whopper. / Your kid definitely wants your Whopper.",
+    "It\u2019s Only Natural."
+  ],
+  stats:[["$57M","Earned media"],["176M","Impressions"],["+12%","Family orders"],["60+","Publications"]],
+  press:[
+    {label:"Ad Age \u2014 \u201cBabies drool for Burger King\u201d", url:"https://adage.com/creativity/work/aa-burger-king-its-only-natural/"},
+    {label:"The Drum \u2014 Ad of the Day", url:"https://www.thedrum.com/news/2025/10/07/ad-the-day-babies-want-bite-parents-burger-king"},
+    {label:"Creative Review", url:"https://www.creativereview.co.uk/burger-king-ingo-campaign-advertising/"},
+    {label:"Little Black Book", url:"https://lbbonline.com/news/Burger-King-Its-Only-Natural"},
+    {label:"Ads of the World", url:"https://www.adsoftheworld.com/campaigns/it-s-only-natural"}
+  ],
+  images:["img/bk_print_full.jpg",["img/bk_print2.jpg","img/bk_print3.jpg"],
+          "img/bk_presscollage.jpg","img/bk_presslogos.jpg","img/bk_awards.jpg"],
+  stills:[],
+  credits:[["Agency","INGO The Agency"],["Creative Leadership","Daniel Fisher, Nicol\u00e1s L\u00f3pez, Fernando Montero"],["Art Direction","Andr\u00e9s Rinc\u00f3n, Andrea Lopez-Boado"],["Copy","Anna Breinfalk, Sebasti\u00e3o Assis"],["Photography","Ale Burset"]]
+},
+{
+  slug:"curtice-brothers", client:"Curtice Brothers", title:"The Ketchup Ban",
+  year:"2022", credit:"Ogilvy Berlin", badge:"Bronze Lion · Cannes", full:true,
+  awards:[{fest:"Cannes",level:"Bronze Lion",logo:"img/aw_cannes.png"},
+          {fest:"New York Festivals",level:"Silver &amp; Bronze",logo:"img/aw_nyf.png"},
+          {fest:"ADC",level:"Bronze",logo:"img/aw_adc.png"}],
+  yt:"I_v-TF93xKs", thumb:"img/t_ketchup_conte.jpg",
+  role:"Copy &amp; Concept",
+  sub:"How a cheeky letter turned a ketchup ban into a product launch.",
+  copy:[
+    "When Antonio Conte took over at Tottenham Hotspur, one of the first things he did was ban ketchup from the players\u2019 diet. Too unhealthy. The sports press loved it.",
+    "Curtice Brothers had a new ketchup. No sugar, only organic tomatoes. Italian ones. So we wrote Antonio a letter and ran it as a full-page ad in Tottenham\u2019s local paper. Not all ketchup is the same, we told him. And a box of ours was on its way.",
+    "A few days later the bottles arrived at the training ground. By then, the letter, the brand and the new ketchup were already all over the news."
+  ],
+  stats:[["\u00a3738.86","Media budget"],["53M","Media impressions"],["+17%","Sales"],["+46%","E-store traffic"]],
+  letter:{image:"img/ketchup_newspaper.jpg", kicker:"The letter, as it ran in Tottenham\u2019s local paper",
+    lines:["Dear Antonio,",
+      "We heard you banned ketchup.","We applaud your decision.",
+      "Nutrition is important. But so is joy.","You know this, you are Italian.",
+      "Do you know what is also from Italy?","Our tomatoes, Antonio.",
+      "Not all ketchup is created equal.","So, don't write off all ketchup.",
+      "We only use organic ingredients.",
+      "In fact, our tomatoes are so naturally sweet, that we don't add sugar.",
+      "Yes, Antonio – senza zucchero.",
+      "We know it will take some big Italian tomatoes to change your mind.",
+      "15 per bottle to be precise.",
+      "That's why we are sending you a box of the world's most natural ketchup.",
+      "For you, and the team to taste and enjoy.",
+      "After all, like you said, nutrition is crucial. And so is joy.",
+      "All the best in your Spurs adventures.","Mario"]},
+  press:[{label:"The Sun \u2014 \u201cSaucey proposal\u201d", url:"https://www.thesun.co.uk/sport/football/16861744/tottenham-news-antonio-conte-ketchup-ban/"}],
+  images:["img/ketchup_board.jpg","img/ketchup_presscollage.jpg","img/ketchup_sun.jpg"],
+  stills:[],
+  credits:[["Agency","Ogilvy Germany, Berlin"],
+           ["Creative Chairman","Dr. Stephan Vogel"],
+           ["Chief Creative Officers","Bj\u00f6rn Bremer, Siyamak Jung"],
+           ["Creative Directors","Tom\u00e1s O\u2019Gorman, Guillermo Aliaga-Pueyrred\u00f3n"],
+           ["Copy &amp; Concept","Sebasti\u00e3o Assis"],
+           ["Agency Producer","Magdalena Bulle"]]
+},
+{
+  slug:"meller", client:"Meller", title:"The Eclipse Is Over",
+  year:"2026", credit:"Self-initiated \u2192 MELLER", badge:"", featured:true,
+  thumb:"img/t_meller_1.jpg",
+  role:"Concept, Copy &amp; Art Direction",
+  sub:"From spec ad to official campaign, over one weekend.",
+  copy:[
+    "In the days before the eclipse, everyone in Spain and Portugal got the same message: protect your eyes. Then my friends started posting pictures in their cardboard eclipse glasses. Their eyes were fine. Their style, less so.",
+    "That felt like a job for a sunglasses brand. So I made MELLER a campaign: a series of deliberately unflattering portraits, and one line.",
+    "I posted it on LinkedIn and tagged the brand and its CMO, Bosco Garc\u00eda Puig. By the end of the weekend, the spec idea was an official MELLER campaign, launching on paid social."
+  ],
+  lines:["The eclipse is over.","Protect your style."],
+  press:[
+    {label:"MarketingDirecto \u2014 \u201cDe LinkedIn a campa\u00f1a real\u201d", url:"https://www.marketingdirecto.com/creacion/campanas-de-marketing/meller-convierte-idea-nacida-linkedin-campana-creativa-post-eclipse"},
+    {label:"Roastbrief \u2014 \u201cDe un post en LinkedIn a una campa\u00f1a oficial\u201d", url:"https://roastbrief.com.mx/2026/08/de-un-post-en-linkedin-a-una-campana-oficial-meller-aprovecha-el-eclipse-para-reivindicar-el-estilo/"},
+    {label:"Publisitios \u2014 \u201cMELLER convierte el eclipse en una lecci\u00f3n de estilo\u201d", url:"https://publisitios.com/info/meller-eclipse-protege-tu-estilo"},
+    {label:"The original LinkedIn post", url:"https://www.linkedin.com/feed/update/urn:li:activity:7494044492904292352/"}
+  ],
+  images:["img/meller_press_lead.jpg","img/meller_1.jpg",["img/meller_3.jpg","img/meller_4.jpg"],
+          {grid:["img/meller_s1.jpg","img/meller_s2.jpg","img/meller_s3.jpg","img/meller_s4.jpg","img/meller_s5.jpg"]},
+          {src:"img/meller_linkedin.jpg", max:460, cap:"The post, and the reply"}],
+  stills:[],
+  credits:[["Brand","MELLER"],["Concept, Copy &amp; Art Direction","Sebasti\u00e3o Assis"],["CMO","Bosco Garc\u00eda Puig"]]
+},
+{
+  slug:"thermomix", client:"Thermomix", title:"The All-New TM7", featured:true,
+  year:"2025", credit:"Ogilvy Berlin \u00b7 Global", badge:"Silver Effie",
+  awards:[{fest:"Effie",level:"Silver",logo:"img/aw_effie.png"}],
+  mp4:"media/tm_reveal_tiktok.mp4", poster:"img/tm_reveal_tiktok_poster.jpg", vertical:true, thumb:"img/t_thermomix.jpg",
+  role:"Copy &amp; Concept",
+  sub:"The launch that got a kitchen machine compared to an Apple Keynote.",
+  copy:[
+    "February 2025. A packed arena in Berlin, full of Thermomix fans waiting for the first new machine in years. We made the film that revealed it.",
+    "When the TM7 appeared on screen, the room screamed like it was a new iPhone. The phone videos spread fast. One of them, captioned \u201cDeutsche Apple Keynote\u201d, got more than 176,000 likes.",
+    "Then came the launch campaign. Nobody buys a kitchen machine because they love kitchen machines. They buy it for the people they cook for. So we made four films about the moments when dinner does the talking."
+  ],
+  lines:["Let your love speak."],
+  press:[
+    {label:"BILD \u2014 \u201cSchreie, Jubel, Ekstase f\u00fcr eine K\u00fcchenmaschine\u201d", url:"https://www.bild.de/leben-wissen/digital/thermomix-premiere-in-berlin-schreie-jubel-ekstase-fuer-eine-kuechenmaschine-67b3621d1aeb2534badcf3a2"}
+  ],
+  images:[
+    {src:"img/tm_keynote_ig.jpg", max:420, cap:"\u201cDeutsche Apple Keynote\u201d \u2014 176,603 likes on Instagram"},
+    {label:"The reveal film"},
+    {yt:"0_D55lnPP1Y"},
+    {label:"The launch campaign"},
+    {mp4:"media/tm_romantic.mp4", poster:"img/t_thermomix.jpg"},
+    {filmgrid:[{mp4:"media/tm_school.mp4", poster:"img/tm_school_poster.jpg"},
+               {mp4:"media/tm_porridge.mp4", poster:"img/tm_porridge_poster.jpg"},
+               {mp4:"media/tm_vegan.mp4", poster:"img/tm_vegan_poster.jpg"}]},
+    "img/tm_1.jpg",["img/tm_2.jpg","img/tm_3.jpg"],["img/tm_4.jpg","img/tm_5.jpg"],
+    ["img/tm_7.jpg","img/tm_8.jpg"],"img/tm_6.jpg"],
+  stills:[],
+  credits:[["Agency","Ogilvy Germany, Berlin"],
+           ["Strategy","Sandra Gutmann"],
+           ["Creative","Sebasti\u00e3o Assis, Lars Huvart, Andr\u00e9s Rinc\u00f3n, Holger Schupp, Patrick Willomitzer"],
+           ["Agency Production","Tanja Frohwerk, Tina Rentzsch, Marta Krol"],
+           ["Reveal film CGI","Ars Thanea"],
+           ["Launch films","Houdini Film \u00b7 Director Florian Meimberg \u00b7 DOP Simon Drescher"],
+           ["Photography","Andreas Reimann"]]
+},
+{
+  slug:"hellmanns", client:"Hellmann's", title:"All You Can Eat",
+  year:"2024", credit:"Ogilvy Berlin \u00b7 Global", badge:"",
+  mp4:"media/hellmanns_trailer.mp4", poster:"img/hm_island.jpg", thumb:"img/t_hellmanns.jpg",
+  films:[{mp4:"media/hellmanns_case.mp4", poster:"img/hm_case_poster.jpg"}],
+  role:"Copy &amp; Concept",
+  sub:"Video games are full of food nobody can eat. So we changed that.",
+  copy:[
+    "Food used to matter in video games. Eat the apple, get your health back. Today it\u2019s mostly decoration: bowls of fruit and loaves of bread that nobody can touch.",
+    "Gamers snack a lot, and Hellmann\u2019s is a snack\u2019s best friend. So we took every piece of decorative food we could find in Fortnite\u2019s code and built a multiplayer island out of it. Grab the mayo, put it on the food, eat as much as you can. Every bite disappears from the map, so the arena gets eaten while you play.",
+    "It launched at TwitchCon Europe, then ran out of Brazil as Loot Irresist\u00edvel: Unilever\u2019s first branded island in Fortnite."
+  ],
+  stats:[["2.6M","Food portions eaten in the game"]],
+  quotes:[
+    {q:"Food used to be a core part of gaming \u2013 giving you health or special abilities \u2013 but think of how many games you\u2019ve played recently where food has just been part of the set dressing. Hellmann\u2019s ambition is to make food a main character again.", who:"Matt Longstaff, International Executive Creative Director, Ogilvy Germany"},
+    {q:"Hellmann\u2019s is always pushing boundaries to connect with people in surprising and engaging ways. Gaming is a powerful territory that we\u2019ve been eager to explore.", who:"Jo\u00e3o Ricardo Di Creddo Brum, Senior Marketing Manager, Unilever"}],
+  images:[["img/hm_g16.jpg","img/hm_g18.jpg"],["img/hm_g26.jpg","img/hm_g32.jpg"],["img/hm_g46.jpg","img/hm_g50.jpg"],
+          {src:"img/hm_loot.jpg", cap:"Loot Irresist\u00edvel \u2014 the Brazilian launch"},
+          {src:"img/hellmanns_press.jpg", cap:"Creative Salon"}],
+  stills:[],
+  press:[
+    {label:"Creative Salon \u2014 Hellmann\u2019s launches interactive game on Fortnite", url:"https://creative.salon/articles/work/hellmann-s-fortnite-island-ogilvy-uk"},
+    {label:"Little Black Book \u2014 Unilever\u2019s first Fortnite island", url:"https://lbbonline.com/news/hellmanns-launches-branded-island-on-fortnite-in-unilever-first"}
+  ],
+  credits:[["Agencies","Ogilvy Germany, Berlin \u00b7 Ogilvy UK"],["International ECD","Matt Longstaff"],["Copy","Sebasti\u00e3o Assis"],["Game Development","Artificial Rome"],["TwitchCon Activation","The Invaders"]]
+},
+{
+  slug:"fielmann", client:"Fielmann", title:"Never Miss a Thing",
+  year:"2024", credit:"Young Lions Germany", badge:"",
+  thumb:"img/t_fielmann_thumb.jpg",
+  lines:["Jane got great seats to see the play. / But she couldn't see it.",
+    "John knows the speed limit. / He just doesn't know the speed.",
+    "Ida found the perfect spot for birdwatching. / But she missed the bird.",
+    "Switch to varifocals and never miss a thing."],
+  copy:[
+    "Twenty-four hours to sell varifocals on a poster.",
+    "Most people who don't wear varifocals carry two pairs instead. Which means sooner or later you're wearing the wrong pair at the wrong moment — and you miss something.",
+    "We built the whole campaign on that one familiar, slightly humiliating feeling."
+  ],
+  result:"Young Lions Germany 2024. Concepted, written and produced in 24 hours — and Fielmann's own pick of the entries.",
+  images:["img/fielmann_1.jpg","img/fielmann_2.jpg","img/fielmann_3.jpg"],
+  stills:[],
+  role:"Copy &amp; Concept",
+  credits:[["Competition","Young Lions Germany"],["Copy","Sebasti\u00e3o Assis"]]
+},
+{
+  slug:"audible", client:"Audible", title:"Screen Time",
+  year:"2020", credit:"D&amp;AD New Blood", badge:"Yellow Pencil",
+  awards:[{fest:"D&AD",level:"Yellow Pencil",logo:"img/aw_dandad.png"}],
+  mp4:"media/audible_case.mp4", poster:"img/audible_1.jpg", thumb:"img/t_audible_1.jpg",
+  lines:["Get the story without the screen.",
+    "Turn your Insta Stories into interesting stories.",
+    "Great stories don't need a screen.",
+    "Screen off, Audible on.",
+    "Turn your screen time into Audible time."],
+  copy:[
+    "Screen time is eating people's free time — games, social apps, scrolling nothing in particular.",
+    "Audible gives you the story without the screen. So we reminded people of that using the screens themselves.",
+    "We turned digital billboards into transparent ones, and dared people to trade some of their screen time for Audible time."
+  ],
+  result:"Yellow Pencil, D&amp;AD New Blood 2020.",
+  press:[{label:"D&amp;AD New Blood archive", url:"https://www.dandad.org/work/new-blood-archive/audible-screen-time"}],
+  images:["img/audible_board_2.jpg","img/audible_board_1.jpg","img/audible_2.jpg","img/audible_3.jpg","img/audible_4.jpg"],
+  stills:[],
+  role:"Copy &amp; Concept",
+  credits:[["Competition","D&amp;AD New Blood"],["Copy","Sebasti\u00e3o Assis"]]
+},
+{
+  slug:"truth-project", client:"UN Open Brief", title:"Spread The Truth Project",
+  year:"2020", credit:"Self-initiated", badge:"",
+  awards:[{fest:"Young Shits",level:"1st place"}],
+  mp4:"media/stt_film.mp4", poster:"img/t_truth.jpg", thumb:"img/t_truth.jpg", sealTone:"ink",
+  role:"Copy &amp; Concept",
+  sub:"Clickbait headlines, with the truth inside.",
+  copy:[
+    "Spring 2020. COVID-19 was spreading, and so were the myths about it. The UN put out an open brief asking creatives everywhere for help. More than 17,000 answered.",
+    "Myths travel fast because they\u2019re more fun to share than facts. So we wrote fake news: headlines too juicy not to click. Click one, and instead of another myth you get the facts, where they come from, and which sources you can trust.",
+    "We built it as a real website, where anyone could make their own fake news and share it. The Drum picked it as one of the most ingenious responses to the brief."
+  ],
+  lines:["Fake news spreads fast. / Let\u2019s use it to spread the truth.",
+    "Why are Russians taking vodka baths?",
+    "What we can learn from pigs in terms of hygiene.",
+    "How much are your masks worth on the black market?",
+    "The five spices you should use on your skin to fight COVID-19."],
+  result:"Most popular entry in the myth-busting category on Talenthouse. Covered by Esquire. Young Shits, 1st place.",
+  images:["img/stt_home.jpg","img/stt_fake.jpg","img/stt_trust.jpg","img/stt_learn.jpg",{src:"img/truth_drum.jpg", cap:"The Drum"}],
+  stills:[],
+  press:[
+    {label:"The Drum \u2014 The most ingenious responses to the UN\u2019s Covid-19 open brief", url:"https://www.thedrum.com/news/2020/05/29/the-most-ingenious-responses-the-un-s-covid-19-creative-open-brief"},
+    {label:"Esquire \u2014 Fake news to spread the truth", url:"https://www.esquire.com/es/actualidad/a32443808/fake-news-spread-the-truth-project-coronavirus/"},
+    {label:"The live site \u2014 spreadthetruthproject.com", url:"https://spreadthetruthproject.com/"}
+  ],
+  credits:[["Brief","United Nations Open Brief, via Talenthouse"],["Art Direction","Andr\u00e9s Rinc\u00f3n"],["Copy &amp; Concept","Sebasti\u00e3o Assis"]]
+}
+];
+
+function seals(d){
+  const L=(d.awards||[]).filter(a=>a.logo);
+  if(!L.length) return '';
+  const ink = d.sealTone==='ink';
+  const A = L.filter(a=>!a.press), P = L.filter(a=>a.press);
+  const mark = a => `<img src="${ink?a.logo.replace('.png','_ink.png'):a.logo}" alt="${a.fest} ${a.level}"${a.press?' class="pressmark"':''}>`;
+  return `<div class="seals">${A.map(mark).join('')}${P.length?`<span class="sealrule"></span>${P.map(mark).join('')}`:''}</div>`;
+}
+function thumbOf(d){return d.thumb||(d.yt?`https://img.youtube.com/vi/${d.yt}/maxresdefault.jpg`:"")}
+
+/* ---- Panel 1: Latest work ---- */
+const FEAT = DATA.filter(d=>d.featured===true);
+const stage=document.getElementById('stage'), barcap=document.getElementById('barcap'), count=document.getElementById('count');
+FEAT.forEach((d,i)=>{
+  const src=thumbOf(d);
+  const a=document.createElement('a');
+  a.className='slide'+(i?'':' on')+(d.sealTone==='ink'?' ink':''); a.href='#/'+d.slug;
+  a.innerHTML=`${src?`<img src="${src}" alt="${d.client}" data-label="${d.client}">`:`<div class="empty">${d.client}</div>`}${seals(d)}`;
+  stage.appendChild(a);
+});
+let fi=0, timer=null;
+function show(n){
+  fi=(n+FEAT.length)%FEAT.length;
+  [...stage.children].forEach((el,i)=>el.classList.toggle('on', i===fi));
+  const d=FEAT[fi];
+  const aw=(d.awards||[]).map(a=>a.fest+' '+a.level).join(' · ');
+  barcap.innerHTML=`<span class="t">${d.client}</span> <span class="mute">${d.title}</span>${aw?`<div class="awards mute">${aw}</div>`:``}`;
+  count.textContent=String(fi+1).padStart(2,'0')+' — '+String(FEAT.length).padStart(2,'0');
+}
+const prog=document.getElementById('prog');
+let kick=null, first=true;
+function resetProg(run,short){ prog.classList.remove('run','short'); void prog.offsetWidth;
+  if(run){ prog.classList.add('run'); if(short) prog.classList.add('short'); } }
+function stop(){ clearInterval(timer); clearTimeout(kick); }
+function auto(){ stop();
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){ resetProg(false); return; }
+  const delay = first ? 4500 : 6500;
+  resetProg(true, first);
+  kick = setTimeout(()=>{
+    show(fi+1); first=false; resetProg(true);
+    timer = setInterval(()=>{ show(fi+1); resetProg(true); }, 6500);
+  }, delay);
+}
+document.getElementById('next').onclick=()=>{first=false;show(fi+1);auto()};
+document.getElementById('prev').onclick=()=>{first=false;show(fi-1);auto()};
+stage.addEventListener('mouseenter',()=>{stop(); prog.classList.remove('run','short');});
+stage.addEventListener('mouseleave',auto);
+show(0);
+
+/* ---- Panel 2: Selected work ---- */
+const grid=document.getElementById('grid');
+DATA.forEach((d,i)=>{
+  const src=thumbOf(d);
+  const aw=(d.awards&&d.awards.length)?d.awards.map(a=>a.fest+' '+a.level).join(' · '):'';
+  const a=document.createElement('a');
+  a.className='tile'+(d.full?' full':''); a.href='#/'+d.slug;
+  a.innerHTML=`<div class="frame${d.sealTone==='ink'?' ink':''}">${src?`<img src="${src}" alt="${d.client}" data-label="${d.client}" loading="lazy">`:`<div class="empty">${d.client}</div>`}${seals(d)}</div>
+    <div class="cap"><span class="num">${String(i+1).padStart(2,'0')}</span>
+    <div><span class="t">${d.client}</span> <span class="mute">${d.title}</span>${aw?`<div class="awards mute">${aw}</div>`:``}</div>
+    <span class="num">${d.year}</span></div>`;
+  if(d.vimeo&&!d.thumb){
+    fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${d.vimeo}&width=1280`).then(r=>r.json())
+      .then(j=>{ if(!j.thumbnail_url) throw 0; setThumb(j.thumbnail_url); })
+      .catch(()=>{ if(d.fallback) setThumb(d.fallback); });
+    function setThumb(u){ const f=a.querySelector('.frame'); const e=f.querySelector('.empty');
+      const im=document.createElement('img'); im.src=u; im.alt=d.client;
+      if(e) e.replaceWith(im); else f.prepend(im); }
+  }
+  grid.appendChild(a);
+});
+
+function vurl(d){return d.yt?'https://www.youtube.com/watch?v='+d.yt:(d.vimeo?'https://vimeo.com/'+d.vimeo:'')}
+function player(d){
+  if(d.mp4) return `<div class="video${d.vertical?' vertical':''}"><video class="native" controls preload="none" playsinline poster="${d.poster||''}"><source src="${d.mp4}" type="video/mp4"></video></div>`;
+  const url=vurl(d); if(!url) return '';
+  const poster=d.yt?`https://img.youtube.com/vi/${d.yt}/maxresdefault.jpg`:(d.poster!==undefined?d.poster:(d.thumb||''));
+  const em=d.yt?`https://www.youtube-nocookie.com/embed/${d.yt}?autoplay=1`:`https://player.vimeo.com/video/${d.vimeo}?dnt=1&autoplay=1`;
+  return `<div class="video"><button class="facade" type="button" data-embed="${em}" aria-label="Play">
+    ${poster?`<img src="${poster}" alt="">`:``}<span class="play"></span></button>
+    <p class="fallback">Not loading? <a href="${url}" target="_blank" rel="noopener">Watch on ${d.yt?'YouTube':'Vimeo'} &#8599;</a></p></div>`;
+}
+document.addEventListener('click',e=>{const b=e.target.closest('.facade');if(!b)return;
+  const w=document.createElement('div');w.className='embed';
+  w.innerHTML=`<iframe src="${b.dataset.embed}" allow="autoplay;fullscreen;picture-in-picture" allowfullscreen></iframe>`;
+  b.replaceWith(w);});
+
+function render(slug){
+  const i=DATA.findIndex(d=>d.slug===slug); if(i<0){document.body.classList.remove('on-case');return;}
+  const d=DATA[i],pv=DATA[(i-1+DATA.length)%DATA.length],nx=DATA[(i+1)%DATA.length];
+  const fig=src=>`<figure class="shot"><img src="${src}" alt="${d.client}" loading="lazy"></figure>`;
+  const one=x=>{
+    if(Array.isArray(x)) return `<div class="pair">${x.map(fig).join('')}</div>`;
+    if(x&&x.grid) return `<div class="socials">${x.grid.map(g=>`<figure class="sq"><img src="${g}" alt="${d.client}" loading="lazy"></figure>`).join('')}</div>`;
+    if(x&&x.label) return `<p class="plab medlab">${x.label}</p>`;
+    if(x&&x.filmgrid) return `<div class="filmgrid">${x.filmgrid.map(player).join('')}</div>`;
+    if(x&&(x.mp4||x.yt||x.vimeo)) return player(x);
+    if(x&&x.src) return `<figure class="shot${x.max?' narrow':''}${x.cap?' capd':''}"${x.max?` style="max-width:${x.max}px"`:''}>${x.cap?`<figcaption class="plab">${x.cap}</figcaption>`:''}<img src="${x.src}" alt="${d.client}" loading="lazy"></figure>`;
+    return fig(x); };
+  const hasFilm=!!(d.yt||d.vimeo||d.mp4);
+  const imgs=(d.images||[]).slice();
+  const leadImg=(!hasFilm&&imgs.length)?one(imgs.shift()):'';
+  const shots=imgs.length?imgs.map(one).join(''):'';
+  const aw=(d.awards&&d.awards.length)?d.awards.map(a=>a.fest+' '+a.level).join(' · '):'';
+  document.getElementById('case-inner').innerHTML=`
+    <a class="back mute" href="#">← Work</a>
+    <div class="chead"><p class="ckicker">${d.client}</p><h1>${d.title}</h1>
+      ${d.sub?`<p class="csub">${d.sub}</p>`:``}
+      <div class="cmeta mute"><span>${d.year}</span><span>${d.credit}</span>${d.role?`<span>Role: ${d.role}</span>`:``}${aw?`<span style="color:var(--ink)">${aw}</span>`:``}</div></div>
+    <div class="cbody">
+      <div class="ctext"><div class="story">${d.copy.map(x=>`<p>${x}</p>`).join('')}</div>
+        ${d.quotes?`<div class="quotes">${d.quotes.map(q=>`<blockquote><p>\u201c${q.q}\u201d</p><cite>${q.who}</cite></blockquote>`).join('')}</div>`:``}
+        ${d.lines?`<div class="copyblock"><p class="plab">Copy</p><div class="lines">${d.lines.map(x=>`<p>${x.split(' / ').join('<br>')}</p>`).join('')}</div></div>`:``}
+        ${d.stats?`<div class="stats">${d.stats.map(([v,l])=>`<div><b>${v}</b><span>${l}</span></div>`).join('')}</div>`:``}
+        ${d.result?`<p class="res">${d.result}</p>`:``}
+        ${(()=>{const P=d.press?(Array.isArray(d.press)?d.press:[d.press]):[];
+          return P.length?`<div class="press"><p class="plab">Press</p>${P.map(x=>
+            (x.url?`<a href="${x.url}" target="_blank" rel="noopener">${x.label} &#8599;</a>`:`<span class="pitem">${x.label}</span>`)).join('')}</div>`:``;})()}
+        ${d.credits?`<div class="credits"><p class="plab">Credits</p><dl>${d.credits.map(([r,n])=>`<dt>${r}</dt><dd>${n}</dd>`).join('')}</dl></div>`:(d.mandatory?`<p class="mand">${d.mandatory}</p>`:``)}</div>
+      <div class="cmedia"><div class="leadvid">${hasFilm?player(d):leadImg}</div>${(d.films&&d.films.length)?`<div class="${d.films.length>1?'filmgrid':''}">${d.films.map(v=>player(typeof v==='string'?{vimeo:v,client:d.client,title:d.title}:v)).join('')}</div>`:''}${d.letter?`<figure class="letter"><figcaption class="plab">${d.letter.kicker}</figcaption>${d.letter.image?`<img class="paper" src="${d.letter.image}" alt="${d.letter.kicker}">`:``}<details><summary>Read the letter</summary><div class="sheet">${d.letter.lines.map((x,i)=>`<p${i===0?' class="sal"':''}${i===d.letter.lines.length-1?' class="sig"':''}>${x}</p>`).join('')}</div></details></figure>`:``}${shots}${d.portraits?`<div class="socials">${d.portraits.map(x=>
+        `<figure class="sq"><img src="${x}" alt="${d.client} social" loading="lazy"></figure>`).join('')}</div>`:``}</div>
+    </div>
+    <div class="pager mute"><a href="#/${pv.slug}">← ${pv.client}</a><a href="#/${nx.slug}">${nx.client} →</a></div>`;
+  document.body.classList.add('on-case'); window.scrollTo(0,0);
+}
+function route(){const h=location.hash; if(h.startsWith('#/'))render(h.slice(2)); else document.body.classList.remove('on-case');}
+addEventListener('hashchange',route); route();
+document.addEventListener('error',e=>{const el=e.target; if(el.tagName!=='IMG')return;
+  const sh=el.closest('.shot'); if(sh){sh.remove();return;}
+  const fr=el.closest('.frame'); if(fr){fr.innerHTML=`<div class="empty">${el.dataset.label||''}</div>`;return;}
+  el.style.display='none';},true);
+(function(){
+  const v = document.getElementById('veil');
+  if(!v){ auto(); return; }
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){ v.remove(); auto(); return; }
+  document.body.classList.add('veiled');
+  let done = false;
+  const lift = () => { if(done) return; done = true;
+    v.classList.add('gone'); document.body.classList.remove('veiled'); auto();
+    setTimeout(()=>v.remove(), 1000);
+    ['wheel','touchstart','keydown','click'].forEach(e=>removeEventListener(e,lift));
+  };
+  ['wheel','touchstart','keydown','click'].forEach(e=>addEventListener(e,lift,{passive:true}));
+  setTimeout(lift, 5000);
+})();
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+
+</body>
+</html>
