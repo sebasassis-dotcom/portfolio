@@ -197,6 +197,11 @@ body.on-case #case{display:block}
 .leadvid .shot{margin:0 0 12px}
 .shot.capd img{border:1px solid var(--line)}
 .video video.native{display:block;width:100%;aspect-ratio:16/9;background:#000;border:1px solid var(--line)}
+.hero{padding:40px 0 0}.hero .video{margin:0}
+.igpost{position:relative;max-width:420px;margin:0 auto 12px}.igpost img{display:block;width:100%;border:1px solid var(--line)}
+.igpost video{position:absolute;left:.758%;top:6.755%;width:94.7%;height:73.56%;object-fit:cover;background:#000}
+.credits dt.cgroup{grid-column:1/-1;font-weight:700;color:var(--ink);margin-top:14px}
+.credits dt.cgroup:first-child{margin-top:0}
 .video.vertical{max-width:340px;margin-left:auto;margin-right:auto}
 .video.vertical video.native{aspect-ratio:9/16}
 .plab.medlab{margin:34px 0 14px}
@@ -215,8 +220,8 @@ body.on-case #case{display:block}
 .stats b{display:block;font-size:clamp(24px,2.6vw,30px);font-weight:600;letter-spacing:-.03em;line-height:1}
 .stats span{display:block;margin-top:6px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
 .credits{margin:30px 0 0;max-width:38ch;padding-top:18px;border-top:1px solid var(--line)}
-.credits dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:12.5px;line-height:1.45}
-.credits dt{color:var(--mute);white-space:nowrap}
+.credits dl{margin:0;display:grid;grid-template-columns:minmax(0,9.5em) 1fr;gap:6px 16px;font-size:12.5px;line-height:1.45}
+.credits dt{color:var(--mute)}
 .credits dd{margin:0}
 .letter{margin:22px 0}
 .letter .paper{display:block;width:100%;max-width:401px;height:auto;margin:0 auto;border:1px solid var(--line)}
@@ -567,7 +572,6 @@ const DATA = [
   thumb:"img/t_bk_print.jpg",
   films:[{mp4:"media/bk_case.mp4", poster:"img/bk_case_poster.jpg"}],
   role:"Copy &amp; Concept",
-  sub:"Kids always want what their parents are eating. So we filmed exactly that.",
   copy:[
     "Burger King spent years taking artificial flavours, colours and preservatives out of its food. Good news. But an ingredients list never made anyone hungry.",
     "Any parent knows this, though: whatever you\u2019re eating, your kid wants it. So we collected real phone videos of babies and toddlers watching their parents bite into a Whopper. No actors. No script. Just very small people, staring very hard at a burger.",
@@ -590,7 +594,7 @@ const DATA = [
   images:["img/bk_print_full.jpg",["img/bk_print2.jpg","img/bk_print3.jpg"],
           "img/bk_presscollage.jpg","img/bk_presslogos.jpg","img/bk_awards.jpg"],
   stills:[],
-  credits:[["Agency","INGO The Agency"],["Creative Leadership","Daniel Fisher, Nicol\u00e1s L\u00f3pez, Fernando Montero"],["Art Direction","Andr\u00e9s Rinc\u00f3n, Andrea Lopez-Boado"],["Copy","Anna Breinfalk, Sebasti\u00e3o Assis"],["Photography","Ale Burset"]]
+  credits:[["Agency","INGO The Agency"],["Creative Leadership","Daniel Fisher, Nicol\u00e1s L\u00f3pez, Fernando Montero"],["Art Direction","Andr\u00e9s Rinc\u00f3n, Andrea Lopez-Boado"],["Copy","Sebasti\u00e3o Assis, Anna Breinfalk"],["Photography","Ale Burset"]]
 },
 {
   slug:"curtice-brothers", client:"Curtice Brothers", title:"The Ketchup Ban",
@@ -603,8 +607,8 @@ const DATA = [
   sub:"How a cheeky letter turned a ketchup ban into a product launch.",
   copy:[
     "When Antonio Conte took over at Tottenham Hotspur, one of the first things he did was ban ketchup from the players\u2019 diet. Too unhealthy. The sports press loved it.",
-    "Curtice Brothers had a new ketchup. No sugar, only organic tomatoes. Italian ones. So we wrote Antonio a letter and ran it as a full-page ad in Tottenham\u2019s local paper. Not all ketchup is the same, we told him. And a box of ours was on its way.",
-    "A few days later the bottles arrived at the training ground. By then, the letter, the brand and the new ketchup were already all over the news."
+    "Curtice Brothers had a new ketchup. Organic Italian tomatoes. No added sugar. So while the ban was still making headlines, we wrote Antonio a letter and ran it as a full-page ad in Tottenham\u2019s local paper. There went our entire budget: \u00a3738.86. Not all ketchup is the same, we told him. And a box of ours was on its way.",
+    "A few days later, the bottles arrived at the training ground. By then, the letter had made the news too and taken Curtice Brothers\u2019 new ketchup with it."
   ],
   stats:[["\u00a3738.86","Media budget"],["53M","Media impressions"],["+17%","Sales"],["+46%","E-store traffic"]],
   letter:{image:"img/ketchup_newspaper.jpg", kicker:"The letter, as it ran in Tottenham\u2019s local paper",
@@ -660,49 +664,50 @@ const DATA = [
   slug:"thermomix", client:"Thermomix", title:"The All-New TM7", featured:true,
   year:"2025", credit:"Ogilvy Berlin \u00b7 Global", badge:"Silver Effie",
   awards:[{fest:"Effie",level:"Silver",logo:"img/aw_effie.png"}],
-  mp4:"media/tm_reveal_tiktok.mp4", poster:"img/tm_reveal_tiktok_poster.jpg", vertical:true, thumb:"img/t_thermomix.jpg",
+  mp4:"media/tm_romantic.mp4", poster:"img/tm_romantic_poster.jpg", hero:true, thumb:"img/t_thermomix.jpg",
   role:"Copy &amp; Concept",
   sub:"The launch that got a kitchen machine compared to an Apple Keynote.",
   copy:[
-    "February 2025. A packed arena in Berlin, full of Thermomix fans waiting for the first new machine in years. We made the film that revealed it.",
-    "When the TM7 appeared on screen, the room screamed like it was a new iPhone. The phone videos spread fast. One of them, captioned \u201cDeutsche Apple Keynote\u201d, got more than 176,000 likes.",
-    "Then came the launch campaign. Nobody buys a kitchen machine because they love kitchen machines. They buy it for the people they cook for. So we made four films about the moments when dinner does the talking."
+    "For the global launch of the Thermomix TM7, we started with a simple thought: cooking is a love language. We called the campaign Let Your Love Speak.",
+    "We spent 21 days shooting in Poland: four story-led films about the people we cook for, four product films showing the new features, and hundreds of smaller assets for markets around the world.",
+    "It all led to February 2025. A packed arena in Berlin, full of Thermomix fans waiting for the first new machine in years. We made the film that revealed it. When the TM7 appeared on screen, the room screamed like it was a new iPhone. The buzz after the launch was insane. In Germany they call it the \u201cDeutsche Apple Keynote\u201d, and it kind of became a meme that everyone knows now."
   ],
   lines:["Let your love speak."],
   press:[
     {label:"BILD \u2014 \u201cSchreie, Jubel, Ekstase f\u00fcr eine K\u00fcchenmaschine\u201d", url:"https://www.bild.de/leben-wissen/digital/thermomix-premiere-in-berlin-schreie-jubel-ekstase-fuer-eine-kuechenmaschine-67b3621d1aeb2534badcf3a2"}
   ],
   images:[
-    {src:"img/tm_keynote_ig.jpg", max:420, cap:"\u201cDeutsche Apple Keynote\u201d \u2014 176,603 likes on Instagram"},
-    {label:"The reveal film"},
-    {yt:"0_D55lnPP1Y"},
-    {label:"The launch campaign"},
-    {mp4:"media/tm_romantic.mp4", poster:"img/t_thermomix.jpg"},
     {filmgrid:[{mp4:"media/tm_school.mp4", poster:"img/tm_school_poster.jpg"},
                {mp4:"media/tm_porridge.mp4", poster:"img/tm_porridge_poster.jpg"},
                {mp4:"media/tm_vegan.mp4", poster:"img/tm_vegan_poster.jpg"}]},
     "img/tm_1.jpg",["img/tm_2.jpg","img/tm_3.jpg"],["img/tm_4.jpg","img/tm_5.jpg"],
-    ["img/tm_7.jpg","img/tm_8.jpg"],"img/tm_6.jpg"],
+    ["img/tm_7.jpg","img/tm_8.jpg"],"img/tm_6.jpg",
+    {label:"Launch night, Berlin"},
+    "img/tm_event.jpg",
+    {igpost:"img/tm_keynote_ig.jpg", mp4:"media/tm_keynote_ig.mp4", poster:"img/tm_keynote_ig_poster.jpg"},
+    {mp4:"media/tm_reveal_tiktok.mp4", poster:"img/tm_reveal_tiktok_poster.jpg", vertical:true},
+    {label:"The product film"},
+    {yt:"0_D55lnPP1Y"}],
   stills:[],
   credits:[["Agency","Ogilvy Germany, Berlin"],
            ["Strategy","Sandra Gutmann"],
            ["Creative","Sebasti\u00e3o Assis, Lars Huvart, Andr\u00e9s Rinc\u00f3n, Holger Schupp, Patrick Willomitzer"],
            ["Agency Production","Tanja Frohwerk, Tina Rentzsch, Marta Krol"],
-           ["Reveal film CGI","Ars Thanea"],
+           ["CGI","Ars Thanea"],
            ["Launch films","Houdini Film \u00b7 Director Florian Meimberg \u00b7 DOP Simon Drescher"],
            ["Photography","Andreas Reimann"]]
 },
 {
   slug:"hellmanns", client:"Hellmann's", title:"All You Can Eat",
-  year:"2024", credit:"Ogilvy Berlin \u00b7 Global", badge:"",
+  year:"2024", credit:"Ogilvy UK + Ogilvy Germany \u00b7 Global", badge:"",
   mp4:"media/hellmanns_trailer.mp4", poster:"img/hm_island.jpg", thumb:"img/t_hellmanns.jpg",
   films:[{mp4:"media/hellmanns_case.mp4", poster:"img/hm_case_poster.jpg"}],
   role:"Copy &amp; Concept",
   sub:"Video games are full of food nobody can eat. So we changed that.",
   copy:[
-    "Food used to matter in video games. Eat the apple, get your health back. Today it\u2019s mostly decoration: bowls of fruit and loaves of bread that nobody can touch.",
-    "Gamers snack a lot, and Hellmann\u2019s is a snack\u2019s best friend. So we took every piece of decorative food we could find in Fortnite\u2019s code and built a multiplayer island out of it. Grab the mayo, put it on the food, eat as much as you can. Every bite disappears from the map, so the arena gets eaten while you play.",
-    "It launched at TwitchCon Europe, then ran out of Brazil as Loot Irresist\u00edvel: Unilever\u2019s first branded island in Fortnite."
+    "To show that Hellmann\u2019s can make anything delicious, we built a multiplayer Fortnite island out of food that would normally be set dressing. Here, a jar of mayo made it edible.",
+    "Players raced to collect Hellmann\u2019s, put it on the food around them and eat as much of the arena as they could. Every item they ate disappeared from the map, changing the game as they played. Whoever ate the most won.",
+    "The island debuted at TwitchCon Europe, then launched in Brazil as Loot Irresist\u00edvel: Unilever\u2019s first independent Fortnite island."
   ],
   stats:[["2.6M","Food portions eaten in the game"]],
   quotes:[
@@ -716,7 +721,19 @@ const DATA = [
     {label:"Creative Salon \u2014 Hellmann\u2019s launches interactive game on Fortnite", url:"https://creative.salon/articles/work/hellmann-s-fortnite-island-ogilvy-uk"},
     {label:"Little Black Book \u2014 Unilever\u2019s first Fortnite island", url:"https://lbbonline.com/news/hellmanns-launches-branded-island-on-fortnite-in-unilever-first"}
   ],
-  credits:[["Agencies","Ogilvy Germany, Berlin \u00b7 Ogilvy UK"],["International ECD","Matt Longstaff"],["Copy","Sebasti\u00e3o Assis"],["Game Development","Artificial Rome"],["TwitchCon Activation","The Invaders"]]
+  credits:[["Ogilvy UK"],
+           ["Executive Creative Director","Daniel Fisher"],
+           ["Creative Directors","Juliana Paracencio, Liam Bushby"],
+           ["Producer","Megan Sturgess"],
+           ["Business Director","Mirjana Slavkovic"],
+           ["Account Manager","Anisa Gani"],
+           ["Designer","Laurence Blake"],
+           ["Strategy Director","Trevor Lindroos"],
+           ["Project Managers","Mariana Ramirez, Lina LaRotta, Sasha Ibale"],
+           ["Ogilvy Germany"],
+           ["Executive Creative Directors","Matt Longstaff, Felipe Galiano"],
+           ["Art Director","Igor Gripovski"],
+           ["Copywriters","Lucas Storni, Julia Machado, Sebasti\u00e3o Assis"]]
 },
 {
   slug:"fielmann", client:"Fielmann", title:"Never Miss a Thing",
@@ -883,6 +900,7 @@ function render(slug){
     if(x&&x.grid) return `<div class="socials">${x.grid.map(g=>`<figure class="sq"><img src="${g}" alt="${d.client}" loading="lazy"></figure>`).join('')}</div>`;
     if(x&&x.label) return `<p class="plab medlab">${x.label}</p>`;
     if(x&&x.filmgrid) return `<div class="filmgrid">${x.filmgrid.map(player).join('')}</div>`;
+    if(x&&x.igpost) return `<figure class="igpost"><img src="${x.igpost}" alt="Instagram post" loading="lazy"><video controls preload="none" playsinline poster="${x.poster}"><source src="${x.mp4}" type="video/mp4"></video></figure>`;
     if(x&&(x.mp4||x.yt||x.vimeo)) return player(x);
     if(x&&x.src) return `<figure class="shot${x.max?' narrow':''}${x.cap?' capd':''}"${x.max?` style="max-width:${x.max}px"`:''}>${x.cap?`<figcaption class="plab">${x.cap}</figcaption>`:''}<img src="${x.src}" alt="${d.client}" loading="lazy"></figure>`;
     return fig(x); };
@@ -896,17 +914,18 @@ function render(slug){
     <div class="chead"><p class="ckicker">${d.client}</p><h1>${d.title}</h1>
       ${d.sub?`<p class="csub">${d.sub}</p>`:``}
       <div class="cmeta mute"><span>${d.year}</span><span>${d.credit}</span>${d.role?`<span>Role: ${d.role}</span>`:``}${aw?`<span style="color:var(--ink)">${aw}</span>`:``}</div></div>
+    ${d.hero?`<div class="hero">${player(d)}</div>`:``}
     <div class="cbody">
       <div class="ctext"><div class="story">${d.copy.map(x=>`<p>${x}</p>`).join('')}</div>
         ${d.quotes?`<div class="quotes">${d.quotes.map(q=>`<blockquote><p>\u201c${q.q}\u201d</p><cite>${q.who}</cite></blockquote>`).join('')}</div>`:``}
-        ${d.lines?`<div class="copyblock"><p class="plab">Copy</p><div class="lines">${d.lines.map(x=>`<p>${x.split(' / ').join('<br>')}</p>`).join('')}</div></div>`:``}
+        ${(d.lines&&d.showLines)?`<div class="copyblock"><p class="plab">Copy</p><div class="lines">${d.lines.map(x=>`<p>${x.split(' / ').join('<br>')}</p>`).join('')}</div></div>`:``}
         ${d.stats?`<div class="stats">${d.stats.map(([v,l])=>`<div><b>${v}</b><span>${l}</span></div>`).join('')}</div>`:``}
         ${d.result?`<p class="res">${d.result}</p>`:``}
         ${(()=>{const P=d.press?(Array.isArray(d.press)?d.press:[d.press]):[];
           return P.length?`<div class="press"><p class="plab">Press</p>${P.map(x=>
             (x.url?`<a href="${x.url}" target="_blank" rel="noopener">${x.label} &#8599;</a>`:`<span class="pitem">${x.label}</span>`)).join('')}</div>`:``;})()}
-        ${d.credits?`<div class="credits"><p class="plab">Credits</p><dl>${d.credits.map(([r,n])=>`<dt>${r}</dt><dd>${n}</dd>`).join('')}</dl></div>`:(d.mandatory?`<p class="mand">${d.mandatory}</p>`:``)}</div>
-      <div class="cmedia"><div class="leadvid">${hasFilm?player(d):leadImg}</div>${(d.films&&d.films.length)?`<div class="${d.films.length>1?'filmgrid':''}">${d.films.map(v=>player(typeof v==='string'?{vimeo:v,client:d.client,title:d.title}:v)).join('')}</div>`:''}${d.letter?`<figure class="letter"><figcaption class="plab">${d.letter.kicker}</figcaption>${d.letter.image?`<img class="paper" src="${d.letter.image}" alt="${d.letter.kicker}">`:``}<details><summary>Read the letter</summary><div class="sheet">${d.letter.lines.map((x,i)=>`<p${i===0?' class="sal"':''}${i===d.letter.lines.length-1?' class="sig"':''}>${x}</p>`).join('')}</div></details></figure>`:``}${shots}${d.portraits?`<div class="socials">${d.portraits.map(x=>
+        ${d.credits?`<div class="credits"><p class="plab">Credits</p><dl>${d.credits.map(([r,n])=>n===undefined?`<dt class="cgroup">${r}</dt>`:`<dt>${r}</dt><dd>${n}</dd>`).join('')}</dl></div>`:(d.mandatory?`<p class="mand">${d.mandatory}</p>`:``)}</div>
+      <div class="cmedia">${d.hero?``:`<div class="leadvid">${hasFilm?player(d):leadImg}</div>`}${(d.films&&d.films.length)?`<div class="${d.films.length>1?'filmgrid':''}">${d.films.map(v=>player(typeof v==='string'?{vimeo:v,client:d.client,title:d.title}:v)).join('')}</div>`:''}${d.letter?`<figure class="letter"><figcaption class="plab">${d.letter.kicker}</figcaption>${d.letter.image?`<img class="paper" src="${d.letter.image}" alt="${d.letter.kicker}">`:``}<details><summary>Read the letter</summary><div class="sheet">${d.letter.lines.map((x,i)=>`<p${i===0?' class="sal"':''}${i===d.letter.lines.length-1?' class="sig"':''}>${x}</p>`).join('')}</div></details></figure>`:``}${shots}${d.portraits?`<div class="socials">${d.portraits.map(x=>
         `<figure class="sq"><img src="${x}" alt="${d.client} social" loading="lazy"></figure>`).join('')}</div>`:``}</div>
     </div>
     <div class="pager mute"><a href="#/${pv.slug}">← ${pv.client}</a><a href="#/${nx.slug}">${nx.client} →</a></div>`;
