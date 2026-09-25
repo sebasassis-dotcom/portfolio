@@ -203,6 +203,11 @@ body.on-case #case{display:block}
 .wide.airy .shot,.wide.airy .pair{margin-bottom:24px}.wide.airy .pair{gap:24px}.wide.airy .bleed{margin:56px 0}
 .wide.airy .bleed + .bleed{margin-top:-32px}
 a.imglink{display:block;cursor:pointer}a.imglink img{transition:opacity .2s}a.imglink:hover img{opacity:.85}
+.duo{display:flex;gap:12px;align-items:flex-start;margin:0 0 12px}
+.duo .shot,.duo .video,.duo .igpost{margin:0;max-width:none}
+.duo .video.vertical{max-width:none}
+.wide.airy .duo{gap:24px;margin-bottom:24px}.wide.airy .duo .shot{margin:0}
+.cmedia .films{margin-top:44px}
 .hero{padding:40px 0 0}.hero .video{margin:0}
 .igpost{position:relative;max-width:420px;margin:0 auto 12px}.igpost img{display:block;width:100%;border:1px solid var(--line)}
 .igpost video{position:absolute;left:.758%;top:6.755%;width:94.7%;height:73.56%;object-fit:cover;background:#000}
@@ -413,6 +418,7 @@ img,svg{max-width:100%}
   .ctext > *{order:0}
   .cmedia > *:not(.leadvid){order:1}
   .wide{order:1;border-top:0;padding-top:0}
+  .wide .duo{display:block}.wide .duo .dcell{margin-bottom:12px}.leadvid .duo{gap:8px}.cmedia .films{margin-top:0}.wide.airy .duo{margin-bottom:0}
   .bleed{left:auto;transform:none;width:100%}.bleed .pair{grid-template-columns:1fr;gap:12px}.wide.airy .bleed{margin:24px 0}.wide.airy .bleed + .bleed{margin-top:-12px}.wide.airy .shot,.wide.airy .pair{margin-bottom:12px}.wide.airy .pair{gap:12px}
   .credits{order:2!important}
   .cmedia > .shot,.cmedia > .video,.cmedia > .socials{margin-top:0;margin-bottom:12px}
@@ -637,7 +643,9 @@ const DATA = [
       "After all, like you said, nutrition is crucial. And so is joy.",
       "All the best in your Spurs adventures.","Mario"]},
   press:[{label:"The Sun \u2014 \u201cSaucey proposal\u201d", url:"https://www.thesun.co.uk/sport/football/16861744/tottenham-news-antonio-conte-ketchup-ban/"}],
-  images:["img/ketchup_board.jpg","img/ketchup_presscollage.jpg","img/ketchup_sun.jpg"],
+  images:[],
+  wide:["img/ketchup_board.jpg",
+        {duo:["img/ketchup_presscollage.jpg",{src:"img/ketchup_sun.jpg", href:"https://www.thesun.co.uk/sport/football/16861744/tottenham-news-antonio-conte-ketchup-ban/"}], r:[1.7716,1.6]}], airy:true,
   stills:[],
   credits:[["Agency","Ogilvy Germany, Berlin"],
            ["Creative Chairman","Dr. Stephan Vogel"],
@@ -674,7 +682,9 @@ const DATA = [
   slug:"thermomix", client:"Thermomix", title:"The All-New TM7", featured:true,
   year:"2025", credit:"Ogilvy Berlin \u00b7 Global", badge:"Silver Effie",
   awards:[{fest:"Effie",level:"Silver",logo:"img/aw_effie.png"}],
-  mp4:"media/tm_reveal_tiktok.mp4", poster:"img/tm_reveal_tiktok_poster.jpg", vertical:true, thumb:"img/t_thermomix.jpg",
+  lead:{duo:[{mp4:"media/tm_reveal_tiktok.mp4", poster:"img/tm_reveal_tiktok_poster.jpg", vertical:true},
+             {igpost:"img/tm_keynote_ig.jpg", mp4:"media/tm_keynote_ig.mp4", poster:"img/tm_keynote_ig_poster.jpg"}], r:[0.5625,0.7611]},
+  thumb:"img/t_thermomix.jpg",
   role:"Copy &amp; Concept",
   sub:"The launch that got a kitchen machine compared to an Apple Keynote.",
   copy:[
@@ -686,9 +696,7 @@ const DATA = [
   press:[
     {label:"BILD \u2014 \u201cSchreie, Jubel, Ekstase f\u00fcr eine K\u00fcchenmaschine\u201d", url:"https://www.bild.de/leben-wissen/digital/thermomix-premiere-in-berlin-schreie-jubel-ekstase-fuer-eine-kuechenmaschine-67b3621d1aeb2534badcf3a2"}
   ],
-  images:[
-    "img/tm_event.jpg",
-    {igpost:"img/tm_keynote_ig.jpg", mp4:"media/tm_keynote_ig.mp4", poster:"img/tm_keynote_ig_poster.jpg"}],
+  images:[{src:"img/tm_event.jpg", cap:"Launch night, Berlin"}],
   wide:[
     {label:"The launch campaign"},
     {mp4:"media/tm_romantic.mp4", poster:"img/tm_romantic_poster.jpg"},
@@ -915,12 +923,13 @@ function render(slug){
     if(x&&x.filmgrid) return `<div class="filmgrid">${x.filmgrid.map(player).join('')}</div>`;
     if(x&&x.igpost) return `<figure class="igpost"><img src="${x.igpost}" alt="Instagram post" loading="lazy"><video controls preload="none" playsinline poster="${x.poster}"><source src="${x.mp4}" type="video/mp4"></video></figure>`;
     if(x&&(x.mp4||x.yt||x.vimeo)) return player(x);
+    if(x&&x.duo) return `<div class="duo">${x.duo.map((it,k)=>`<div class="dcell" style="flex:${x.r[k]} 1 0">${one(it)}</div>`).join('')}</div>`;
     if(x&&x.bleed) return `<div class="bleed">${one(x.bleed)}</div>`;
     if(x&&x.src){const im=`<img src="${x.src}" alt="${x.cap||d.client}" loading="lazy">`; return `<figure class="shot${x.max?' narrow':''}${x.cap?' capd':''}"${x.max?` style="max-width:${x.max}px"`:''}>${x.cap?`<figcaption class="plab">${x.cap}${x.href?' &#8599;':''}</figcaption>`:''}${x.href?`<a class="imglink" href="${x.href}" target="_blank" rel="noopener">${im}</a>`:im}</figure>`;}
     return fig(x); };
   const hasFilm=!!(d.yt||d.vimeo||d.mp4);
   const imgs=(d.images||[]).slice();
-  const leadImg=(!hasFilm&&imgs.length)?one(imgs.shift()):'';
+  const leadImg=(!d.lead&&!hasFilm&&imgs.length)?one(imgs.shift()):'';
   const shots=imgs.length?imgs.map(one).join(''):'';
   const aw=(d.awards&&d.awards.length)?d.awards.map(a=>a.fest+' '+a.level).join(' · '):'';
   document.getElementById('case-inner').innerHTML=`
@@ -939,7 +948,7 @@ function render(slug){
           return P.length?`<div class="press"><p class="plab">Press</p>${P.map(x=>
             (x.url?`<a href="${x.url}" target="_blank" rel="noopener">${x.label} &#8599;</a>`:`<span class="pitem">${x.label}</span>`)).join('')}</div>`:``;})()}
         ${d.credits?`<div class="credits"><p class="plab">Credits</p><dl>${d.credits.map(([r,n])=>n===undefined?`<dt class="cgroup">${r}</dt>`:`<dt>${r}</dt><dd>${n}</dd>`).join('')}</dl></div>`:(d.mandatory?`<p class="mand">${d.mandatory}</p>`:``)}</div>
-      <div class="cmedia">${d.hero?``:`<div class="leadvid">${hasFilm?player(d):leadImg}</div>`}${(d.films&&d.films.length)?`<div class="${d.films.length>1?'filmgrid':''}">${d.films.map(v=>player(typeof v==='string'?{vimeo:v,client:d.client,title:d.title}:v)).join('')}</div>`:''}${d.letter?`<figure class="letter"><figcaption class="plab">${d.letter.kicker}</figcaption>${d.letter.image?`<img class="paper" src="${d.letter.image}" alt="${d.letter.kicker}">`:``}<details><summary>Read the letter</summary><div class="sheet">${d.letter.lines.map((x,i)=>`<p${i===0?' class="sal"':''}${i===d.letter.lines.length-1?' class="sig"':''}>${x}</p>`).join('')}</div></details></figure>`:``}${shots}${d.portraits?`<div class="socials">${d.portraits.map(x=>
+      <div class="cmedia">${d.hero?``:`<div class="leadvid">${d.lead?one(d.lead):(hasFilm?player(d):leadImg)}</div>`}${(d.films&&d.films.length)?`<div class="films ${d.films.length>1?'filmgrid':''}">${d.films.map(v=>player(typeof v==='string'?{vimeo:v,client:d.client,title:d.title}:v)).join('')}</div>`:''}${d.letter?`<figure class="letter"><figcaption class="plab">${d.letter.kicker}</figcaption>${d.letter.image?`<img class="paper" src="${d.letter.image}" alt="${d.letter.kicker}">`:``}<details><summary>Read the letter</summary><div class="sheet">${d.letter.lines.map((x,i)=>`<p${i===0?' class="sal"':''}${i===d.letter.lines.length-1?' class="sig"':''}>${x}</p>`).join('')}</div></details></figure>`:``}${shots}${d.portraits?`<div class="socials">${d.portraits.map(x=>
         `<figure class="sq"><img src="${x}" alt="${d.client} social" loading="lazy"></figure>`).join('')}</div>`:``}</div>
       ${d.wide?`<div class="wide${d.airy?' airy':''}">${d.wide.map(one).join('')}</div>`:``}
     </div>
